@@ -23,6 +23,7 @@ var SVGMaster=(function() {
 	var TAG_USE='use';
 	var TAG_STYLE='style';
 	var TAG_TITLE='title';
+	var TAG_PARAGRAPH='p';
 	var EVENT_CLICK='click';
 
 	var SELECTOR_DEFAULT_ICON='i.icon';
@@ -38,20 +39,37 @@ var SVGMaster=(function() {
 
 	init();
 
+	/**
+	 * Just a wrapper for the loadLibrary function
+	 */
 	function init() {
 		loadLibrary();
 	}
 
+	/**
+	 * Sets the icons selector pattern to match in jQuery selector format
+	 * @param {String} str - The selector string
+	 */
 	function setIconsSelector(str) {
 		iconsSelector=str;
 	}
+	/**
+	 * Sets the backgrounds selector pattern to match in jQuery selector format
+	 * @param {String} str - The selector string
+	 */
 	function setBgsSelector(str) {
 		bgsSelector=str;
 	}
+	/**
+	 * Parses icons and background (only if not already parsed)
+	 */
 	function update() {
 		replaceIcons();
 		replaceBgs();
 	}
+	/**
+	 * Replace elements matching IconsSelector selector with the svg item while keeping the classes
+	 */
 	function replaceIcons() {
 		$(iconsSelector).each(function() {
 			var currClass=$(this).attr(ATTRIBUTE_CLASS);
@@ -59,9 +77,17 @@ var SVGMaster=(function() {
 			$(this).replaceWith(template(TEMPLATE_SVG_INLINE, {class:currClass, iconID:iconID}));
 		});
 	}
+	/**
+	 * Gets the "outer" html markup of a jquery object
+	 * @param  {jQuery} jQueryObj
+	 * @return {String} The outer html content
+	 */
 	function outerHtml(jQueryObj) {
 		return jQueryObj.clone().wrap('<p>').parent().html();
 	}
+	/**
+	 * Parses elements matching BgsSelectors inlining the svg content as (base64 encoded) background-url property
+	 */
 	function replaceBgs() {
 		$(bgsSelector).not('['+ATTRIBUTE_PARSED+']').each(function() {
 			var currClass=$(this).attr(ATTRIBUTE_CLASS);
@@ -81,6 +107,12 @@ var SVGMaster=(function() {
 			$(this).attr(ATTRIBUTE_PARSED, true);
 		});
 	}
+	/**
+	 * Microtemplating function. Used in various places to build html strings
+	 * @param  {String} templateStr - the string containing template contents
+	 * @param  {Object} dataObj     - Object used to populate the template
+	 * @return {String}             The final string assembled
+	 */
 	function template(templateStr, dataObj) {
 		var out=templateStr;
 		var regexp=/{{([^}}]+)}}/g;
@@ -94,10 +126,18 @@ var SVGMaster=(function() {
 		}
 		return out;
 	}
+	/**
+	 * Gets the url of the library specified in the <link rel="svgmaster" /> href attribute
+	 * @return {String} the url of the default library
+	 */
 	function getDefaultLibraryURL() {
 		var link=$(template(TEMPLATE_DEFAULT_LIBRARY_LINK, {attributes:STRING_DEFAULT_LIBRARY_REL}));
 		return link.attr(ATTRIBUTE_HREF);
 	}
+	/**
+	 * Load library and invoke the update method when done
+	 * @param  {String} url (optional) - the url of the library to load. If empty the default library specified via <link rel="svgmaster" /> will be used
+	 */
 	function loadLibrary(url) {
 		url = url || getDefaultLibraryURL();
 		libraryURL=url;
@@ -110,15 +150,25 @@ var SVGMaster=(function() {
 			});
 		}
 	}
+	/**
+	 * opens the library showcase dialog
+	 */
 	function showcase() {
 		var showcaseContent=template(TEMPLATE_SHOWCASE, {contents:getShowcaseContents(), headerTitle: libraryURL});
 		body.append($(showcaseContent));
 		update();
 		$(SELECTOR_SHOWCASE_WRAPPER).on(EVENT_CLICK, hideShowcase);
 	}
+	/**
+	 * Hides the showcase dialog
+	 */
 	function hideShowcase() {
 		$(SELECTOR_SHOWCASE_WRAPPER).off(EVENT_CLICK).remove();
 	}
+	/**
+	 * prepare the markup to be appended to the showcase dialog
+	 * @return {String} string representation of the markup to be appended to the DOM
+	 */
 	function getShowcaseContents() {
 		var out='';
 		library.find(TAG_SYMBOL).each(function() {
