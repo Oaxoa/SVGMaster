@@ -1,0 +1,58 @@
+.SVGMasterWrapper {
+	background: rgba(0,0,0,.6);
+	position: absolute; top: 0; left: 0;
+	height: 100%; width: 100%;
+	z-index: 100;
+}
+.SVGMasterShowcase {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	background: #fff;
+	padding: 1em;
+	box-shadow: 1px 4px 8px rgba(0,0,0,.7);
+	width: 80%;
+	position: absolute;
+	top: 2em;
+	left: 10%;
+}
+.SVGMasterShowcase header {
+	border-bottom: 1px solid #ccc;
+	padding: .5em;
+	font-weight: bold;
+	color: #000;
+	font-size: 1.8em;
+	text-align: center;
+}
+.SVGMasterShowcase footer {
+	clear: both;
+}
+.SVGMasterShowcaseList {
+	list-style: none;
+	margin: 0; padding: 0;
+}
+.SVGMasterShowcaseItem {
+	width: 100px;
+	float: left;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	margin: 0; padding: 1em;
+	text-align: center;
+}
+.SVGMasterShowcaseItem .icon {
+	width: 40px; height: 40px;
+}
+.SVGMasterShowcaseItem span {
+	display: block;
+	padding: .4em 0;
+	text-align: center;
+	font-size: 1.3em;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.icon {
+	width: 1em;
+	height: 1em;
+	font-size: 16px;
+	display: inline-block;
+	vertical-align: middle;
+}
