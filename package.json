@@ -14,9 +14,13 @@
   "author": "Pierluigi Pesenti",
   "license": "Apache-2.0",
   "devDependencies": {
+    "btoa": "^1.1.2",
+    "cheerio": "^0.20.0",
     "grunt": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-uglify": "^1.0.1"
+    "grunt-contrib-uglify": "^1.0.1",
+    "request": "^2.72.0",
+    "tape": "^4.6.0"
   },
   "dependencies": {
     "jquery": "^1.8.0"
