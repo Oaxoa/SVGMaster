@@ -24,7 +24,5 @@ test('Find background matches', function(t) {
 test('Don\'t retrieve twice an already parsed background', function(t) {
 	SVGMaster.update();
 	t.equal(SVGMaster.getBackgroundElements().length, 0);
-	global.$ = cheerio.load(file1);
-	t.equal(SVGMaster.getBackgroundElements().length, 1);
 	t.end();
 });
