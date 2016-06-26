@@ -34,9 +34,9 @@
 		var iconsSelector=SELECTOR_DEFAULT_ICON;
 		var bgsSelector=SELECTOR_DEFAULT_BG;
 		var libraryURL;
-		var library=$('#library');
-		var head=$('head');
-		var body=$('body');
+		var library;
+		var head;
+		var body;
 
 		init();
 
@@ -75,16 +75,23 @@
 			replaceIcons(target);
 			replaceBackgrounds(target);
 		}
+		/**
+		 * Returns the icon id given a class attribute value
+		 * @param  {String} classStr Class attribute value
+		 * @return {String}          The icon id
+		 */
 		function getIconID(classStr) {
 			return classStr.match(REGEXP_ICON_ID)[1];
 		}
 		function getIconElements(target) {
 			// target parameter is checked here instead than in the update() method so that the function can be used publicly
+			body=$('body');
 			var target=target || body;
 			return target.find(iconsSelector).not('['+ATTRIBUTE_PARSED+']');
 		}
 		function getBackgroundElements(target) {
 			// target parameter is checked here instead than in the update() method so that the function can be used publicly
+			body=$('body');
 			var target=target || body;
 			return target.find(bgsSelector).not('['+ATTRIBUTE_PARSED+']')
 		}
@@ -109,6 +116,7 @@
 			getBackgroundElements(target).each(function() {
 				var currClass=$(this).attr(ATTRIBUTE_CLASS);
 				var iconID=getIconID(currClass);
+				library=$('#library');
 				var matches=library.find('#'+STRING_ICON_SYMBOL_PREFIX+iconID);
 				var symbolSVG=outerHtml(matches);
 				var matchesStyle=library.find(TAG_STYLE);
@@ -141,7 +149,9 @@
 			libraryURL=url;
 			if(url) {
 				$.ajax({url:libraryURL, dataType:STRING_AJAX_DATATYPE}).done(function(res) {
+					head=$('head');
 					head.append(res);
+					library=$('#library');
 					library.find(TAG_USE).remove();
 					head.append(library.find(TAG_STYLE).clone());
 					update();
@@ -169,6 +179,7 @@
 		 */
 		function getShowcaseContents() {
 			var out='';
+			library=$('#library');
 			library.find(TAG_SYMBOL).each(function() {
 				var t=$(this);
 				var title=t.find(TAG_TITLE).text();
