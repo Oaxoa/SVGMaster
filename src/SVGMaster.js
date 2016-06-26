@@ -11,6 +11,7 @@
 		var ATTRIBUTE_HREF='href';
 		var ATTRIBUTE_ID='id';
 		var REGEXP_ICON_ID=/icon-([a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)/;
+		var REGEXP_TEMPLATE=/{{([^}}]+)}}/g;
 
 		var TEMPLATE_DEFAULT_LIBRARY_LINK='link[rel="{{attributes}}"]';
 		var TEMPLATE_SVG_BASE64_CONTENT='url(data:image/svg+xml;base64,{{content}})';
@@ -54,6 +55,10 @@
 		function setIconSelector(selector) {
 			iconsSelector=selector;
 		}
+		/**
+		 * Gets the icons selector pattern to match in jQuery selector format
+		 * @return {String} The selector string
+		 */
 		function getIconSelector() {
 			return iconsSelector;
 		}
@@ -64,6 +69,10 @@
 		function setBackgroundSelector(selector) {
 			bgsSelector=selector;
 		}
+		/**
+		 * Gets the backgrounds selector pattern to match in jQuery selector format
+		 * @return {String} The selector string
+		 */
 		function getBackgroundSelector() {
 			return bgsSelector;
 		}
@@ -83,12 +92,22 @@
 		function getIconID(classStr) {
 			return classStr.match(REGEXP_ICON_ID)[1];
 		}
+		/**
+		 * Retrieves the matching icon elements, without performing any operation
+		 * @param  {jQuery} [target] A jquery element to limit the search. If not provided defaults to the body element
+		 * @return {jQuery} A jQuery collection of matching elements
+		 */
 		function getIconElements(target) {
 			// target parameter is checked here instead than in the update() method so that the function can be used publicly
 			body=$('body');
 			var target=target || body;
 			return target.find(iconsSelector).not('['+ATTRIBUTE_PARSED+']');
 		}
+		/**
+		 * Retrieves the matching background elements, without performing any operation
+		 * @param  {jQuery} [target] A jquery element to limit the search. If not provided defaults to the body element
+		 * @return {jQuery} A jQuery collection of matching elements
+		 */
 		function getBackgroundElements(target) {
 			// target parameter is checked here instead than in the update() method so that the function can be used publicly
 			body=$('body');
@@ -196,7 +215,7 @@
 		 */
 		function template(templateStr, dataObj) {
 			var out=templateStr;
-			var regexp=/{{([^}}]+)}}/g;
+			var regexp=REGEXP_TEMPLATE;
 			var result;
 			while(result!==null) {
 				result=regexp.exec(templateStr);
@@ -216,6 +235,7 @@
 			return jQueryObj.clone().wrap('<p>').parent().html();
 		}
 
+		// PUBLIC API
 		return {
 			getIconElements:getIconElements,
 			getBackgroundElements:getBackgroundElements,
