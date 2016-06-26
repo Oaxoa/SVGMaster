@@ -2,7 +2,6 @@
 	var SVGMaster=(function() {
 		'use strict';
 
-		var TEMPLATE_SHOWCASE='<div class="SVGMasterWrapper"><div class="SVGMasterShowcase"><header>{{headerTitle}}</header><ul class="SVGMasterShowcaseList">{{contents}}</ul><footer></footer></div></div>';
 		var NS_SVG='http://www.w3.org/2000/svg';
 		var NS_XLINK='http://www.w3.org/1999/xlink';
 
@@ -17,6 +16,8 @@
 		var TEMPLATE_SVG_BASE64_CONTENT='url(data:image/svg+xml;base64,{{content}})';
 		var TEMPLATE_SVG_BASE64='<svg xmlns="'+NS_SVG+'"  xmlns:xlink="'+NS_XLINK+'" width="10" height="10">{{style}}{{symbol}}<use xlink:href="#iconSymbol-{{iconID}}" width="100%" height="100%" /></svg>';
 		var TEMPLATE_SVG_INLINE='<svg class="{{class}}"><use xlink:href="#iconSymbol-{{iconID}}" width="100%" height="100%" /></svg>';
+		var CLASS_SHOWCASE='SVGMasterShowcase';
+		var TEMPLATE_SHOWCASE='<div class="SVGMasterWrapper"><div class="'+CLASS_SHOWCASE+'"><header>{{headerTitle}}</header><ul class="SVGMasterShowcaseList">{{contents}}</ul><footer></footer></div></div>';
 		var TEMPLATE_SHOWCASE_ITEM='<li class="SVGMasterShowcaseItem"><i class="icon icon-{{id}}"></i><span title="{{title}}">{{title}}</span></li>';
 		var STRING_DEFAULT_LIBRARY_REL='prefetch svgmaster';
 		var STRING_AJAX_DATATYPE='text';
@@ -164,9 +165,12 @@
 		 * @param  {String} [url] The url of the library to load. If falsy the default library specified via <link rel="svgmaster" /> will be used
 		 */
 		function loadLibrary(url) {
+			// it could eventually manage multiple libraries or make customizable the id/class of the library
+			// or eventually use in page svg libraries instead of external resources but inlining would be discouraged 
+			// to enforce caching.
 			url = url || getDefaultLibraryURL();
 			libraryURL=url;
-			if(url) {
+			if(url && typeof $.ajax !== 'undefined') {
 				$.ajax({url:libraryURL, dataType:STRING_AJAX_DATATYPE}).done(function(res) {
 					head=$('head');
 					head.append(res);
@@ -182,15 +186,16 @@
 		 */
 		function showcase() {
 			var showcaseContent=template(TEMPLATE_SHOWCASE, {contents:getShowcaseContents(), headerTitle: libraryURL});
+			body=$('body');
 			body.append($(showcaseContent));
-			update();
-			$(SELECTOR_SHOWCASE_WRAPPER).on(EVENT_CLICK, hideShowcase);
+			// replace only icons on specific target. Backgrounds are not used in the showcase
+			replaceIcons($('.'+CLASS_SHOWCASE));
 		}
 		/**
 		 * Hides the showcase dialog
 		 */
 		function hideShowcase() {
-			$(SELECTOR_SHOWCASE_WRAPPER).off(EVENT_CLICK).remove();
+			$(SELECTOR_SHOWCASE_WRAPPER).remove();
 		}
 		/**
 		 * Prepares the markup to be appended to the showcase dialog
@@ -247,7 +252,9 @@
 			getIconSelector:getIconSelector,
 			setBackgroundSelector:setBackgroundSelector,
 			getBackgroundSelector:getBackgroundSelector,
-			showcase:showcase
+			showcase:showcase,
+			hideShowcase:hideShowcase,
+			getDefaultLibraryURL:getDefaultLibraryURL
 		};
 	})();
 

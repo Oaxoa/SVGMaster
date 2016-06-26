@@ -3,9 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+		}
+		.container {
+			border: 1px solid #ccc;
+			padding: 1em;
+		}
+	</style>
+	<link rel="prefetch svgmaster" href="library.svg" />
 </head>
 <body>
-	<h1><i class="icon icon-calendar" /> Hello world!</h1>
-	<div class="mightyBox iconBg icon-calendar">This is a mighty box.</div>
+	<div class="container" id="container1">
+		<h1><i class="icon icon-calendar" /> A title</h1>
+		<div class="mightyBox iconBg icon-calendar">This is a mighty box.</div>
+	</div>
+	<div class="container" id="container2">
+		<h2><i class="icon icon-calendar" /> Another title</h2>
+		<div class="iconBg icon-calendar">This is a mighty box.</div>
+	</div>
 </body>
 </html>
