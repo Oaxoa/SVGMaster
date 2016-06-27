@@ -6,13 +6,13 @@
 
 It 
 * defines a workflow based on a single svg library containing all the assets (1 single HTTP request)
-* avoid the need of creating svg spritesheet of create multiple `<use />` instances of the defined symbols
-* Let you export directly from illustrator or build the library with any script (including grunt and gulp) to concatenate moltiple svg files into a single library
-* It manages compatibility issues across browsers, replacing the dom elements with inline svg snippets using a single `<use />` tag inside to have 100% compatibility with modern browser
-* It allows to easily use an svg as background. It actually base64 encode and inline svg data into the background css property to grant again max compatibility
-* svgs can be easily manipulated via css to add transitions or change color properties
-* it is totally transparent to the developer
-* it creates a showcase of all the icons contained in the library to easy preview and lookup ids, that can be easily triggered programmatically from source code or via browser console for debugging
+* avoids the need of creating svg spritesheet of create multiple `<use />` instances of the defined symbols
+* let you export directly from illustrator or build the library with any script (including grunt and gulp) to concatenate moltiple svg files into a single library
+* manages compatibility issues across browsers, replacing the dom elements with inline svg snippets using a single `<use />` tag inside to have 100% compatibility with modern browser
+* allows to easily use an svg as background. It actually base64 encode and inline svg data into the background css property to grant again max compatibility
+* generates svgs that can be easily manipulated via css to add transitions or change color properties
+* is totally transparent to the developer
+* creates a showcase of all the icons contained in the library to easy preview and lookup ids, that can be easily triggered programmatically from source code or via browser console for debugging
 
 ## Getting started
 
