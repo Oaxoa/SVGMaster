@@ -2,7 +2,7 @@
 
 	SVGMaster is a utility library to help streamlining the use of svg graphical assets (icons/backgrounds) in a html page.
 
-[![Version][version-svg]][package-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
+[![License][license-image]][license-url]
 
 It 
 * defines a workflow based on a single svg library containing all the assets (1 single HTTP request)
@@ -27,3 +27,5 @@ SVGMaster initialize itself when loaded, reload the library via ajax that should
 SVGMaster doesn't perform any polling to check updates to the page.
 
 
+[license-image]: https://img.shields.io/badge/license-APACHE2-green.svg?style=flat-square
+[license-url]: LICENSE
