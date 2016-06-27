@@ -1,6 +1,8 @@
 # SVGMaster
 
-SVGMaster is a utility library to help streamlining the use of svg graphical assets (icons/backgrounds) in a html page.
+	SVGMaster is a utility library to help streamlining the use of svg graphical assets (icons/backgrounds) in a html page.
+
+[![Version][version-svg]][package-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
 
 It 
 * defines a workflow based on a single svg library containing all the assets (1 single HTTP request)
