@@ -20,6 +20,7 @@
     "grunt": "^1.0.1",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-uglify": "^1.0.1",
+    "grunt-svgstore": "^1.0.0",
     "request": "^2.72.0",
     "tape": "^4.6.0"
   },
