@@ -19,7 +19,7 @@
 		var CLASS_SHOWCASE = 'SVGMasterShowcase';
 		var TEMPLATE_SHOWCASE = '<div class="SVGMasterWrapper"><div class="' + CLASS_SHOWCASE + '"><header>{{headerTitle}}</header><ul class="SVGMasterShowcaseList">{{contents}}</ul><footer></footer></div></div>';
 		var TEMPLATE_SHOWCASE_ITEM = '<li class="SVGMasterShowcaseItem"><i class="icon icon-{{id}}"></i><span title="{{title}}">{{title}}</span></li>';
-		var STRING_DEFAULT_LIBRARY_REL = 'prefetch svgmaster';
+		var STRING_DEFAULT_LIBRARY_REL = 'svgmaster';
 		var STRING_AJAX_DATATYPE = 'text';
 		var STRING_ICON_SYMBOL_PREFIX = 'iconSymbol-';
 		var TAG_SYMBOL = 'symbol';
