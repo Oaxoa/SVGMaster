@@ -3,17 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>SVGMaster demo page</title>
-	<link rel="stylesheet" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.showcase.min.css" />
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Dosis:600|Kalam:700' rel='stylesheet' type='text/css'>
 	<style>
 		/* Page related */
 		body {
-			font-family: Helvetica, Arial, sans-serif;
+			font-family: "PT Sans", Helvetica, Arial, sans-serif;
 			text-align: center;
 			background: #fed;
 			padding: 0; margin: 0;
 		}
+		#bg {
+			background-size: cover;
+		}
 		.box {
-			padding: 1em; margin: 1em 0 2em 0;
+			padding: 2em; margin: 4em 0 2em 0;
 			border: 1px solid #ccc;
 			background: #fff;
 			position: relative;
@@ -40,19 +43,46 @@
 			color: #fff;
 			border-bottom: 3px solid #f04;
 			cursor: pointer;
+			font-family: Dosis, sans-serif;
+			text-transform: uppercase;
 		}
 		button:hover {
 			background-color: #f08;
 		}
 		#main {
-			max-width: 960px;
+			max-width: 1120px;
 			width: 100%;
 			padding: 30px;
 			box-sizing: border-box;
 			background: #fff;
-			border-left: 1px solid #ccc;
-			border-right: 1px solid #ccc;
+			border-left: 2px solid #ccc;
+			border-right: 2px solid #ccc;
 			margin: 0 auto;
+		}
+		.logo {
+			font-family: Kalam;
+			margin: .25em 0 0 0;
+			font-size: 72px;
+		}
+		header h2 {
+			margin: 0;
+		}
+		h3.title {
+			text-align: left;
+			font-size: 2em;
+			text-transform: uppercase;
+		}
+		.box h3.title {
+			position: absolute;
+			top: -1.05em;
+			left: 1em;
+			padding: 0;
+			display: inline-block;
+			background: #fff;
+			margin: 0;
+		}
+		h1 {
+			font-size: 2em;
 		}
 
 
@@ -76,7 +106,7 @@
 			margin: 0;
 		}
 		.box p {
-			background: rgba(255,255,255,.8);
+			background: rgba(255,255,255,.9);
 			padding: .3em 0;
 		}
 		#bgTest1 button {
@@ -116,44 +146,47 @@
 	
 </head>
 <body>
-	<section id="main">
-		<header>
-			<h1>SVGMaster</h1>
-			<h2>Come <em>coding faster</em>, obey <em>the svg</em> master!</h2>
-			<a href="https://github.com/Oaxoa/SVGMaster"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
-		</header>
-		<section id="contents">
-			<h3>A few icons</h3>
-			<div class="box">
-				<h1><i class="icon icon-calendar"></i> In a h1 sample element</h1>
-				<h2><i class="icon icon-calendar"></i> In a h2 sample element</h2>
-				<h3><i class="icon icon-calendar"></i> In a h3 sample element</h3>
-				<h4><i class="icon icon-calendar"></i> In a h4 sample element</h4>
-				<h5><i class="icon icon-calendar"></i> In a h5 sample element</h5>
-				<h6><i class="icon icon-calendar"></i> In a h6 sample element</h6>
-				<p><i class="icon icon-calendar"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
-			</div>
-			<div id="bgTest1" class="box iconBg icon-arlequine">
-				<p>This is a div with a svg background.</p>
-				<button id="btnNextBg">Cycle background</button>
-				<a class="credit" href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
-			</div>
-			<div id="bgTest2" class="box style0 iconBg icon-football">
-				<p>This is another div with a svg background.</p>
-				<button id="btnNextStyle">Cycle style</button>
-			</div>
+	<div id="bg" class="iconBg icon-texture">
+		<section id="main">
+			<header>
+				<h1 class="logo">SVGMaster</h1>
+				<h2>Come <em>coding faster</em>, obey <em>the svg</em> master!</h2>
+				<a href="https://github.com/Oaxoa/SVGMaster"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+			</header>
+			<section id="contents">
+				<div class="box">
+					<h3 class="title">A few icons</h3>
+					<h1><i class="icon icon-calendar"></i> In a h1 sample element</h1>
+					<h2><i class="icon icon-calendar"></i> In a h2 sample element</h2>
+					<h3><i class="icon icon-calendar"></i> In a h3 sample element</h3>
+					<h4><i class="icon icon-calendar"></i> In a h4 sample element</h4>
+					<h5><i class="icon icon-calendar"></i> In a h5 sample element</h5>
+					<h6><i class="icon icon-calendar"></i> In a h6 sample element</h6>
+					<p><i class="icon icon-calendar"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
+				</div>
+				<div id="bgTest1" class="box iconBg icon-arlequine">
+					<p>This is a div with a svg background.</p>
+					<button id="btnNextBg">Cycle background</button>
+					<a class="credit" href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
+				</div>
+				<div id="bgTest2" class="box style0 iconBg icon-football">
+					<p>This is another div with a svg background.</p>
+					<button id="btnNextStyle">Cycle style</button>
+				</div>
+				<button id="btnShowcase">Showcase</button>
+			</section>
+			<footer></footer>
 		</section>
-		<footer></footer>
-	</section>
+	</div>
 
 	
 	
 
-	<button id="btnShowcase">Showcase</button>
+	
 	<script src="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.min.js"></script>
 	<script>
 		(function() {
-			var BACKGROUNDS_CYCLE=['icon-arlequine', 'icon-dots'];
+			var BACKGROUNDS_CYCLE=['icon-arlequine', 'icon-dots', 'icon-texture'];
 			var STYLES_COUNT=5;
 			var backgroundIndex=0;
 			var backgroundStyle=0;
@@ -191,5 +224,6 @@
 		})();
 		
 	</script>
+	<link rel="stylesheet" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.showcase.min.css" />
 </body>
 </html>
