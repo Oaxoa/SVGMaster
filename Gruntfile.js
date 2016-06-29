@@ -18,16 +18,16 @@ module.exports = function(grunt) {
         }
       }
     },
+    // svgstore is a grunt task to build a single library file form a folder of svg files
     svgstore: {
       default: {
         files: {
-          'dist/libraries/icons/highschool.svg': ['libraries/icons/highschool/*.svg'],
-          'dist/libraries/background/freepik.svg': ['libraries/backgrounds/freepik/*.svg']
+          'dist/libraries/sample.svg': ['libraries/sample/*.svg']
         }
       },
       options: {
         prefix : 'iconSymbol-', // This will prefix each ID
-        svg: { // will add and overide the the default xmlns="http://www.w3.org/2000/svg" attribute to the resulting SVG
+        svg: {
           viewBox : '0 0 470 470',
           xmlns: 'http://www.w3.org/2000/svg',
           id:'library',
