@@ -17,8 +17,18 @@
 			width: 1em;
 			height: 1em;
 		}
+		#bgTest1 {
+			width: 300px;
+			height: 300px;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		#bgTest1 p {
+			background: rgba(255,255,255,.8);
+			padding: .3em 0;
+		}
 	</style>
-	<link rel="prefetch svgmaster" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
+	<link rel="svgmaster" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 	<script src="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.min.js"></script>
 </head>
@@ -34,21 +44,38 @@
 	<h5><i class="icon icon-calendar"></i> In a h5 sample element</h5>
 	<h6><i class="icon icon-calendar"></i> In a h6 sample element</h6>
 	<p><i class="icon icon-calendar"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
-	<div class="iconBg icon-calendar">
+	<div id="bgTest1" class="iconBg icon-arlequine">
 		<p>This is a div with a svg background.</p>
 		<p>
 			<a href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
 		</p>
+		<button id="btnNextBg">Cycle background</button>
 	</div>
+
 	<button id="btnShowcase">Showcase</button>
 	<script>
 		(function() {
+			var BACKGROUNDS_CYCLE=['icon-arlequine', 'icon-dots'];
+			var backgroundIndex=0;
+
 			function init() {
 				setBehaviours();
+				renderBackground();
 			}
 			function setBehaviours() {
 				$('#btnShowcase').on('click', SVGMaster.showcase);
+				$('#btnNextBg').on('click', nextBackground);
 				$('body').on('click', '.SVGMasterWrapper', SVGMaster.hideShowcase);
+			}
+			function nextBackground() {
+				backgroundIndex++;
+				backgroundIndex=backgroundIndex%BACKGROUNDS_CYCLE.length;
+				alert(backgroundIndex);
+				renderBackground();
+			}
+			function renderBackground() {
+				$('#bgTest1').attr('class', 'iconBg '+BACKGROUNDS_CYCLE[backgroundIndex]).removeAttr('data-svgmaster-parsed');
+				SVGMaster.update();
 			}
 			$(function() {
 				init();
