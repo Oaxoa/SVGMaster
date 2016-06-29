@@ -30,7 +30,7 @@
 	</style>
 	<link rel="svgmaster prefetch" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-	<script src="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.min.js"></script>
+	
 </head>
 <body>
 	<h1>SVGMaster</h1>
@@ -53,6 +53,7 @@
 	</div>
 
 	<button id="btnShowcase">Showcase</button>
+	<script src="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.min.js"></script>
 	<script>
 		(function() {
 			var BACKGROUNDS_CYCLE=['icon-arlequine', 'icon-dots'];
@@ -60,7 +61,6 @@
 
 			function init() {
 				setBehaviours();
-				renderBackground(false);
 			}
 			function setBehaviours() {
 				$('#btnShowcase').on('click', SVGMaster.showcase);
@@ -74,7 +74,7 @@
 			}
 			function renderBackground(force) {
 				$('#bgTest1').attr('class', 'iconBg '+BACKGROUNDS_CYCLE[backgroundIndex]).removeAttr('data-svgmaster-parsed');
-				if(force) SVGMaster.update();
+				SVGMaster.update();
 			}
 			$(function() {
 				init();
