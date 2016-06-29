@@ -60,7 +60,7 @@
 
 			function init() {
 				setBehaviours();
-				renderBackground();
+				renderBackground(false);
 			}
 			function setBehaviours() {
 				$('#btnShowcase').on('click', SVGMaster.showcase);
@@ -70,12 +70,11 @@
 			function nextBackground() {
 				backgroundIndex++;
 				backgroundIndex=backgroundIndex%BACKGROUNDS_CYCLE.length;
-				alert(backgroundIndex);
-				renderBackground();
+				renderBackground(true);
 			}
-			function renderBackground() {
+			function renderBackground(force) {
 				$('#bgTest1').attr('class', 'iconBg '+BACKGROUNDS_CYCLE[backgroundIndex]).removeAttr('data-svgmaster-parsed');
-				SVGMaster.update();
+				if(force) SVGMaster.update();
 			}
 			$(function() {
 				init();
