@@ -5,14 +5,58 @@
 	<title>SVGMaster demo page</title>
 	<link rel="stylesheet" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.showcase.min.css" />
 	<style>
+		/* Page related */
 		body {
 			font-family: Helvetica, Arial, sans-serif;
+			text-align: center;
+			background: #fed;
+			padding: 0; margin: 0;
 		}
-		div {
-			padding: 1em;
+		.box {
+			padding: 1em; margin: 1em 0 2em 0;
 			border: 1px solid #ccc;
 			background: #fff;
+			position: relative;
+			text-align: left;
+			min-height: 300px;
 		}
+		.box .credit {
+			position: absolute;
+			bottom: -1.5em;
+			text-align: center;
+			width: 100%;
+			font-size: 11px;
+			color: #000;
+			text-decoration: none;
+		}
+		.box .credit:hover {
+			text-decoration: underline;
+		}
+		button {
+			padding: .35em .65em;
+			border: none;
+			border-radius: .3em;
+			background: #f06;
+			color: #fff;
+			border-bottom: 3px solid #f04;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #f08;
+		}
+		#main {
+			max-width: 960px;
+			width: 100%;
+			padding: 30px;
+			box-sizing: border-box;
+			background: #fff;
+			border-left: 1px solid #ccc;
+			border-right: 1px solid #ccc;
+			margin: 0 auto;
+		}
+
+
+		/* SVGMaster related */
 		.icon {
 			width: 1em;
 			height: 1em;
@@ -24,8 +68,47 @@
 			background-repeat: no-repeat;
 		}
 		#bgTest1 p {
+			position: absolute;
+			bottom: 1em;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			margin: 0;
+		}
+		.box p {
 			background: rgba(255,255,255,.8);
 			padding: .3em 0;
+		}
+		#bgTest1 button {
+			position: absolute;
+			top: 1em; left: 1em;
+		}
+		#bgTest2 {
+			padding-left: 54px;
+		}
+		#bgTest2.style0 {
+			background-size: contain;
+			background-position: right center;
+			background-repeat: no-repeat;
+		}
+		#bgTest2.style1 {
+			background-size: 2em;
+		}
+		#bgTest2.style2 {
+			background-size: 32px;
+			background-position: 12px;
+			background-repeat: repeat-y;
+		}
+		#bgTest2.style3 {
+			padding-right: 54px;
+			background-size: 32px;
+			background-position: right;
+			background-repeat: repeat-y;
+		}
+		#bgTest2.style4 {
+			background-size: 16px;
+			background-position: bottom;
+			background-repeat: repeat-x;
 		}
 	</style>
 	<link rel="svgmaster prefetch" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
@@ -33,31 +116,47 @@
 	
 </head>
 <body>
-	<h1>SVGMaster</h1>
+	<section id="main">
+		<header>
+			<h1>SVGMaster</h1>
+			<h2>Come <em>coding faster</em>, obey <em>the svg</em> master!</h2>
+			<a href="https://github.com/Oaxoa/SVGMaster"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+		</header>
+		<section id="contents">
+			<h3>A few icons</h3>
+			<div class="box">
+				<h1><i class="icon icon-calendar"></i> In a h1 sample element</h1>
+				<h2><i class="icon icon-calendar"></i> In a h2 sample element</h2>
+				<h3><i class="icon icon-calendar"></i> In a h3 sample element</h3>
+				<h4><i class="icon icon-calendar"></i> In a h4 sample element</h4>
+				<h5><i class="icon icon-calendar"></i> In a h5 sample element</h5>
+				<h6><i class="icon icon-calendar"></i> In a h6 sample element</h6>
+				<p><i class="icon icon-calendar"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
+			</div>
+			<div id="bgTest1" class="box iconBg icon-arlequine">
+				<p>This is a div with a svg background.</p>
+				<button id="btnNextBg">Cycle background</button>
+				<a class="credit" href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
+			</div>
+			<div id="bgTest2" class="box style0 iconBg icon-football">
+				<p>This is another div with a svg background.</p>
+				<button id="btnNextStyle">Cycle style</button>
+			</div>
+		</section>
+		<footer></footer>
+	</section>
 
-	<h3>A few icons</h3>
 	
-	<h1><i class="icon icon-calendar"></i> In a h1 sample element</h1>
-	<h2><i class="icon icon-calendar"></i> In a h2 sample element</h2>
-	<h3><i class="icon icon-calendar"></i> In a h3 sample element</h3>
-	<h4><i class="icon icon-calendar"></i> In a h4 sample element</h4>
-	<h5><i class="icon icon-calendar"></i> In a h5 sample element</h5>
-	<h6><i class="icon icon-calendar"></i> In a h6 sample element</h6>
-	<p><i class="icon icon-calendar"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
-	<div id="bgTest1" class="iconBg icon-arlequine">
-		<p>This is a div with a svg background.</p>
-		<p>
-			<a href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
-		</p>
-		<button id="btnNextBg">Cycle background</button>
-	</div>
+	
 
 	<button id="btnShowcase">Showcase</button>
 	<script src="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.min.js"></script>
 	<script>
 		(function() {
 			var BACKGROUNDS_CYCLE=['icon-arlequine', 'icon-dots'];
+			var STYLES_COUNT=5;
 			var backgroundIndex=0;
+			var backgroundStyle=0;
 
 			function init() {
 				setBehaviours();
@@ -65,15 +164,25 @@
 			function setBehaviours() {
 				$('#btnShowcase').on('click', SVGMaster.showcase);
 				$('#btnNextBg').on('click', nextBackground);
+				$('#btnNextStyle').on('click', nextStyle);
 				$('body').on('click', '.SVGMasterWrapper', SVGMaster.hideShowcase);
 			}
 			function nextBackground() {
 				backgroundIndex++;
 				backgroundIndex=backgroundIndex%BACKGROUNDS_CYCLE.length;
-				renderBackground(true);
+				renderBackground();
 			}
-			function renderBackground(force) {
-				$('#bgTest1').attr('class', 'iconBg '+BACKGROUNDS_CYCLE[backgroundIndex]).removeAttr('data-svgmaster-parsed');
+			function renderBackground() {
+				$('#bgTest1').attr('class', 'box iconBg '+BACKGROUNDS_CYCLE[backgroundIndex]).removeAttr('data-svgmaster-parsed');
+				SVGMaster.update();
+			}
+			function nextStyle() {
+				backgroundStyle++;
+				backgroundStyle=backgroundStyle%STYLES_COUNT;
+				renderStyle();
+			}
+			function renderStyle() {
+				$('#bgTest2').attr('class', 'box iconBg icon-football style'+backgroundStyle).removeAttr('data-svgmaster-parsed');
 				SVGMaster.update();
 			}
 			$(function() {
