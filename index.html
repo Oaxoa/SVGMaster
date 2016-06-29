@@ -85,6 +85,23 @@
 		h1 {
 			font-size: 2em;
 		}
+		code {
+			font-family: Consola, monospace;
+			background: #e5e5e5;
+			color: #333;
+			padding: .1em .6em;
+			white-space: pre;
+		}
+
+		.box p {
+			background: rgba(255,255,255,.85);
+			padding: .3em 0;
+			line-height: 1.3em;
+			font-size: 1.1em;
+		}
+		h4 {
+			font-size: 1.3em;
+		}
 
 
 		/* SVGMaster related */
@@ -108,10 +125,6 @@
 			width: 100%;
 			text-align: center;
 			margin: 0;
-		}
-		.box p {
-			background: rgba(255,255,255,.9);
-			padding: .3em 0;
 		}
 		#bgTest1 button {
 			position: absolute;
@@ -159,23 +172,52 @@
 			</header>
 			<section id="contents">
 				<div class="box">
+					<h3 class="title">Features</h3>
+					<p>SVGMaster allow you to streamline the usage of svg in a web projects delivering an amount of unique features:</p>
+					
+					<h4>One single SVG library</h4>
+					<p>Be careful, we said "library", not "spritesheet".</p>
+					<p>Spritesheets are so 2008. They are a breeze to use but a pain to create and maintain. There are a good number of tools that will help you during the creation of a spritesheet but if this is true for PNGs, it is not so true when it comes to SVGs.</p>
+					<p>What SVGMaster promotes is the usage of a single svg file containing a symbol definition for every icon or background you need.</p>
+					<p>Forget about coordinates or stage size.</p>
+					<p>Load EVERY graphical asset you gonna need in 1 single HTTP request without the hassle of maintaining a spritesheet.</p>
+					<p>It heavily makes use of the <code>&lt;use /&gt;</code> svg tag to use instances of symbols when it comes to icons (and this was the easy part since reference to external library symbols is well upported across modern browsers) and when it comes to backgrounds it extract the markup of the symbol in the library, build it in a base64 representation and inlines it in the style attribute of the DOM element to maximize compatibility.</p>
+
+					<h4>Manages both icons and backgrounds</h4>
+					<p>They have very different approach and browser support when it comes use references from a single library.</p>
+					<p>SVGMaster takes care of all the verbose and boring stuff.</p>
+
+					<h4>Super easy setup</h4>
+					<p>Include the library, use custom attributes or class names on elements&hellip; Et voila! That's it.</p>
+					<p>By default the default selector for icons is "i.icon" for icons and "*.iconBg" for backgrounds so the library will search for elements like <code>&lt;i class="icon icon-calendar" /&gt;</code> and <code>&lt;div class="iconBg icon-calendar"&gt;I am a div&lt;/div&gt;</code> but it is customizable.</p>
+
+					
+					<h4>It is a manager</h4>
+					<p>No instances to maintain, just call <code>SVGMaster.update()</code> and all the unparsed instances will be rendered.</p>
+					<p>SVGMaster don't implement any kind of polling, you are responsible to trigger the <code>update</code> method whenever you replace elements or add new ones.</p>
+				</div>
+				<div class="box">
 					<h3 class="title">A few icons</h3>
-					<h1><i class="icon icon-calendar"></i> In a h1 sample element</h1>
-					<h2><i class="icon icon-calendar"></i> In a h2 sample element</h2>
-					<h3><i class="icon icon-calendar"></i> In a h3 sample element</h3>
-					<h4><i class="icon icon-calendar"></i> In a h4 sample element</h4>
-					<h5><i class="icon icon-calendar"></i> In a h5 sample element</h5>
-					<h6><i class="icon icon-calendar"></i> In a h6 sample element</h6>
-					<p><i class="icon icon-calendar"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
+					<h1><i class="icon icon-chemistry"></i> In a h1 sample element</h1>
+					<h2><i class="icon icon-chemistry"></i> In a h2 sample element</h2>
+					<h3><i class="icon icon-chemistry"></i> In a h3 sample element</h3>
+					<h4><i class="icon icon-chemistry"></i> In a h4 sample element</h4>
+					<h5><i class="icon icon-chemistry"></i> In a h5 sample element</h5>
+					<h6><i class="icon icon-chemistry"></i> In a h6 sample element</h6>
+					<p><i class="icon icon-chemistry"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
 				</div>
-				<div id="bgTest1" class="box iconBg icon-arlequine">
-					<p>This is a div with a svg background.</p>
-					<button id="btnNextBg">Cycle background</button>
-					<a class="credit" href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
-				</div>
-				<div id="bgTest2" class="box style0 iconBg icon-football">
-					<p>This is another div with a svg background.</p>
-					<button id="btnNextStyle">Cycle style</button>
+
+				<div class="box">
+					<h3 class="title">A few backgrounds</h3>
+					<div id="bgTest1" class="box iconBg icon-arlequine">
+						<p>This is a div with a svg background.</p>
+						<button id="btnNextBg">Cycle background</button>
+						<a class="credit" href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
+					</div>
+					<div id="bgTest2" class="box style0 iconBg icon-football">
+						<p>This is another div with a svg background.</p>
+						<button id="btnNextStyle">Cycle style</button>
+					</div>
 				</div>
 				<button id="btnShowcase">Showcase</button>
 			</section>
