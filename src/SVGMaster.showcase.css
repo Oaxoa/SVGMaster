@@ -1,6 +1,6 @@
 .SVGMasterWrapper {
 	background: rgba(0,0,0,.6);
-	position: absolute; top: 0; left: 0;
+	position: fixed; top: 0; left: 0;
 	height: 100%; width: 100%;
 	z-index: 100;
 }
@@ -12,7 +12,9 @@
 	box-shadow: 1px 4px 8px rgba(0,0,0,.7);
 	width: 80%;
 	position: absolute;
-	top: 2em;
+	top: 5%;
+	height: 90%;
+	overflow: auto;
 	left: 10%;
 }
 .SVGMasterShowcase header {
@@ -22,6 +24,9 @@
 	color: #000;
 	font-size: 1.8em;
 	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 95%;
 }
 .SVGMasterShowcase footer {
 	clear: both;
