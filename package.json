@@ -2,8 +2,10 @@
   "name": "svgmaster",
   "version": "0.2.0",
   "description": "SVGMaster is a library helping to streamline the usage of svg assets in a web page, being them used as icons or backgrounds",
-  "main": "demo.html",
-  "scripts": {},
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "tape test/SVGMaster.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Oaxoa/SVGMaster.git"
@@ -11,7 +13,7 @@
   "keywords": [
     "svg"
   ],
-  "author": "Pierluigi Pesenti",
+  "author": "Pierluigi Pesenti <info@oaxoa.com> (http://www.oaxoa.com)",
   "license": "Apache-2.0",
   "devDependencies": {
     "btoa": "^1.1.2",
