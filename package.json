@@ -1,8 +1,8 @@
 {
   "name": "svgmaster",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "SVGMaster is a library helping to streamline the usage of svg assets in a web page, being them used as icons or backgrounds",
-  "main": "Gruntfile.js",
+  "main": "dist/svgmaster.min.js",
   "scripts": {
     "test": "tape test/SVGMaster.js"
   },
