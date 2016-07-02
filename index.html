@@ -98,6 +98,7 @@
 			padding: .3em 0;
 			line-height: 1.3em;
 			font-size: 1.1em;
+			margin: 0;
 		}
 		h4 {
 			font-size: 1.3em;
@@ -195,9 +196,12 @@
 					<h4>It is a manager</h4>
 					<p>No instances to maintain, just call <code>SVGMaster.update()</code> and all the unparsed instances will be rendered.</p>
 					<p>SVGMaster don't implement any kind of polling, you are responsible to trigger the <code>update</code> method whenever you replace elements or add new ones.</p>
+
+					<h4>It lets you build you library</h4>
+					<p>Via <a href="https://www.npmjs.com/package/grunt-svgstore">svgstore</a> as a dev dependency. Everything is already packed.</p>
 				</div>
 				<div class="box">
-					<h3 class="title">A few icons</h3>
+					<h3 class="title">A few demo icons</h3>
 					<h1><i class="icon icon-chemistry"></i> In a h1 sample element</h1>
 					<h2><i class="icon icon-chemistry"></i> In a h2 sample element</h2>
 					<h3><i class="icon icon-chemistry"></i> In a h3 sample element</h3>
@@ -205,6 +209,23 @@
 					<h5><i class="icon icon-chemistry"></i> In a h5 sample element</h5>
 					<h6><i class="icon icon-chemistry"></i> In a h6 sample element</h6>
 					<p><i class="icon icon-chemistry"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
+
+					<p>Using this simple css rule:</p>
+					<pre><code>
+.icon {
+	width: 1em;
+	height: 1em;
+}
+					</code></pre>
+					<p>you can easily have icons that resizes according to the element they belong.</p>
+					<p>If you want to have an icon twice as big, simply define it as 2em wide/high. Or use pixels if you really want to.</p>
+					<p>If you have some specific icon that have different aspect ratio (not square), simply override the symbol definition:</p>
+					<pre><code>
+						#iconSymbol-agenda {
+							width: 2em;
+							height: 1em;
+						}
+					</code></pre>
 				</div>
 
 				<div class="box">
