@@ -16,6 +16,7 @@
 		var TEMPLATE_SVG_BASE64_CONTENT = 'url(data:image/svg+xml;base64,{{content}})';
 		var TEMPLATE_SVG_BASE64 = '<svg xmlns="' + NS_SVG + '"  xmlns:xlink="' + NS_XLINK + '" width="10" height="10">{{style}}{{symbol}}<use xlink:href="#iconSymbol-{{iconID}}" width="100%" height="100%" /></svg>';
 		var TEMPLATE_SVG_INLINE = '<svg class="{{class}}"><use xlink:href="#iconSymbol-{{iconID}}" width="100%" height="100%" /></svg>';
+		var TEMPLATE_SVG_INLINE_CLONE = '<svg class="{{class}}" {{viewBox}}><g width="100%" height="100%">{{content}}</g></svg>';
 		var CLASS_SHOWCASE = 'SVGMasterShowcase';
 		var TEMPLATE_SHOWCASE = '<div class="SVGMasterWrapper"><div class="' + CLASS_SHOWCASE + '"><header>{{headerTitle}}</header><ul class="SVGMasterShowcaseList">{{contents}}</ul><footer></footer></div></div>';
 		var TEMPLATE_SHOWCASE_ITEM = '<li class="SVGMasterShowcaseItem"><i class="icon icon-{{id}}"></i><span title="{{title}}">{{title}}</span></li>';
@@ -119,12 +120,34 @@
 		 */
 		function replaceIcons(target) {
 			getIconElements(target).each(function() {
+				var needsClone=$(this).is('[svgmaster-clone]');
 				var currClass = $(this).attr(ATTRIBUTE_CLASS);
 				var iconID = getIconID(currClass);
-				var replacement = $(template(TEMPLATE_SVG_INLINE, {
-					class: currClass,
-					iconID: iconID
-				}));
+				var replacement;
+				if(needsClone) {
+					var cloneTarget=$('#library #iconSymbol-'+iconID);
+					if(cloneTarget.length>0) {
+						var clone=cloneTarget[0].innerHTML;
+						var viewBox=cloneTarget.attr('viewBox');
+						if(viewBox) {
+							viewBox='viewBox="'+viewBox+'"';
+						} else {
+							viewBox='';
+						}
+						replacement = $(template(TEMPLATE_SVG_INLINE_CLONE, {
+							class: currClass,
+							iconID: iconID,
+							content: clone,
+							viewBox: viewBox
+						}));
+					}
+				} else {
+					replacement = $(template(TEMPLATE_SVG_INLINE, {
+						class: currClass,
+						iconID: iconID
+					}));
+				}
+				
 				replacement.attr(ATTRIBUTE_PARSED, true);
 				$(this).replaceWith(replacement);
 			});

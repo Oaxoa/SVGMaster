@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>SVGMaster demo page</title>
+	<style>
+		/* Page related */
+		body {
+			padding: 0; margin: 0;
+		}
+		/* SVGMaster related */
+		.icon {
+			width: 10em;
+			height: 10em;
+		}
+		.icon-graduate-recolor .graduate-hat:hover {
+			fill: magenta !important;
+		}
+	</style>
+	<link rel="svgmaster prefetch" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	
+</head>
+<body>
+	<div><i class="icon icon-graduate"></i></div>
+	<div><i class="icon icon-graduate icon-graduate-recolor" svgmaster-clone></i></div>
+	<script src="src/SVGMaster.js"></script>
+	<script>
+		SVGMaster.update();		
+	</script>
+</body>
+</html>
