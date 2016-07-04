@@ -13,6 +13,14 @@
 			background: #fed;
 			padding: 0; margin: 0;
 		}
+		a {
+			color: #F06;
+			font-weight: bold;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
 		#bg {
 			background-size: cover;
 		}
@@ -64,6 +72,7 @@
 			font-family: Kalam;
 			margin: .25em 0 0 0;
 			font-size: 72px;
+			line-height: 1.2em;
 		}
 		header h2 {
 			margin: 0;
@@ -89,7 +98,7 @@
 			font-family: Consola, monospace;
 			background: #e5e5e5;
 			color: #333;
-			padding: .1em .6em;
+			padding: .1em .35em;
 			white-space: pre;
 		}
 
@@ -106,6 +115,24 @@
 		pre {
 			background: #e5e5e5;
 			padding-left: 1em;
+		}
+		dt {
+		    font-weight: bold;
+			margin-top: 1em;
+			margin-bottom: .4em;
+		}
+		dd {
+			margin-left: 0;
+		}
+		footer {
+			text-align: center;
+			margin: 2em 0;
+		}
+		footer .icon {
+			font-size: 7em;
+		}
+		.logo .icon {
+			font-size: 2em;
 		}
 
 
@@ -207,7 +234,7 @@
 	<div id="bg" class="iconBg icon-texture">
 		<section id="main">
 			<header>
-				<h1 class="logo">SVGMaster</h1>
+				<h1 class="logo"><i class="icon icon-graduate-2"></i><br />SVGMaster</h1>
 				<h2>Come <em>coding faster</em>, obey <em>the svg</em> master!</h2>
 				<a href="https://github.com/Oaxoa/SVGMaster"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 			</header>
@@ -243,7 +270,7 @@
 					<p>Via <a href="https://www.npmjs.com/package/grunt-svgstore">svgstore</a> as a dev dependency. Everything is already packed.</p>
 
 					<h4>Debug / showcase your library in page with a single command</h4>
-					<p>Just call <code>SVGMaster.showcase()</code> to preview all icons in your library in the page itself. Do it programmatically or via console.</p><p>When your are done just call <code>SVGMaster.hideShowcase()</code>. Check the full <a href="">API</a>.</p>
+					<p>Just call <code>SVGMaster.showcase()</code> to preview all icons in your library in the page itself. Do it programmatically or via console.</p><p>When your are done just call <code>SVGMaster.hideShowcase()</code>. Check the full <a href="#API">API</a>.</p>
 					<p><button id="btnShowcase">Showcase current library</button></p>
 				</div>
 				<div class="box">
@@ -350,14 +377,87 @@
 						<li>(Optional) If you have some icon that are not square add specific rule for the aspect ratio: <code>.icon.icon-pen, .icon.icon-key {width: 2em;}</code></li>
 						<li>(Optional) If you need the showcase functionality (aka debugging) and you want it to look pretty include <code>dist/svgmaster.min.css</code> in your page</li>
 						<li>Use <code>&lt;i class="icon icon-calendar"&gt;&lt;/i&gt;</code> for icons or <code>&lt;div class="iconBg icon-calendar"&gt;&lt;/div&gt;</code> for backgrounds</li>
-						<li>(Optional) You can override the default selector to be able to use something like: <code>&lt;span data-icon="icon-calendar"&gt;&lt;/span&gt;</code>. Check the <a href="javascript:;">API</a></li>
+						<li>(Optional) You can override the default selector to be able to use something like: <code>&lt;span data-icon="icon-calendar"&gt;&lt;/span&gt;</code>. Check the <a href="#API">API</a></li>
 						<li>Call SVGMaster.update()</li>
 					</ol>
 				</div>
 
+				<div class="box">
+					<h3 class="title" id="API">API</h3>
+					<dl>
+						<dt>getIconElements</dt>
+						<dd>
+							Retrieves the matching icon elements, without performing any operation<br />
+							@param  {jQuery} [target] A jquery element to limit the search. If not provided defaults to the body element<br />
+							@return {jQuery} A jQuery collection of matching elements
+						</dd>
+						<dt>getBackgroundElements</dt>
+						<dd>
+							Retrieves the matching background elements, without performing any operation<br />
+							@param  {jQuery} [target] A jquery element to limit the search. If not provided defaults to the body element<br />
+							@return {jQuery} A jQuery collection of matching elements
+						</dd>
+						<dt>replaceIcons</dt>
+						<dd>
+							Replace elements matching IconsSelector selector with the svg item while keeping the classes<br />
+							@param  {jQuery} target Narrows the search to descendants of this element
+						</dd>
+						<dt>replaceBackgrounds</dt>
+						<dd>
+							Parses elements matching BgsSelectors inlining the svg content as (base64 encoded) background-url property<br />
+							@param  {jQuery} target Narrows the search to descendants of this element
+						</dd>
+						<dt>update</dt>
+						<dd>
+							Parses icons and background (only if not already parsed)<br />
+							@param  {jQuery} [target] Set it to narrow the search to descendants of this element. If falsy defaults to the body element
+						</dd>
+						<dt>loadLibrary</dt>
+						<dd>
+							Load library and invoke the update method when done<br />
+							@param  {String} [url] The url of the library to load. If falsy the default library specified via <link rel="svgmaster" /> will be used
+						</dd>
+						<dt>setIconSelector</dt>
+						<dd>
+							Sets the icons selector pattern to match in jQuery selector format<br />
+							@param {String} selector The selector string
+						</dd>
+						<dt>getIconSelector</dt>
+						<dd>
+							Gets the icons selector pattern to match in jQuery selector format<br />
+							@return {String} The selector string
+						</dd>
+						<dt>setBackgroundSelector</dt>
+						<dd>
+							Sets the backgrounds selector pattern to match in jQuery selector format<br />
+							@param {String} selector The selector string
+						</dd>
+						<dt>getBackgroundSelector</dt>
+						<dd>
+							Gets the backgrounds selector pattern to match in jQuery selector format<br />
+							@return {String} The selector string
+						</dd>
+						<dt>showcase</dt>
+						<dd>
+							Opens the library showcase dialog
+						</dd>
+						<dt>hideShowcase</dt>
+						<dd>
+							Hides the showcase dialog
+						</dd>
+						<dt>getDefaultLibraryURL</dt>
+						<dd>
+							Gets the url of the library specified in the <link rel="svgmaster" /> href attribute<br />
+							@return {String} The url of the default library
+						</dd>
+					</dl>
+				</div>
+
+
+
 				
 			</section>
-			<footer></footer>
+			<footer><i class="icon icon-atom"></i></footer>
 		</section>
 	</div>
 
