@@ -168,11 +168,24 @@
 		.icon-graduate-recolor .graduate-dress {
 			fill: #f06 !important;
 		}
-		.icon-graduate-hover {
+		.icon-graduate-hover .graduate-dress {
 			transition: all .3s ease;
 		}
-		.icon-graduate-hover:hover path.graduate-dress {
-			opacity: .5;
+		.icon-graduate-hover:hover .graduate-dress {
+			fill: #0C9 !important;
+		}
+		.icon-graduate-animate .graduate-dress {
+			animation: pulse 3s infinite;
+
+		}
+		
+		@keyframes pulse {
+			0% {
+				background: magenta;
+			}
+			100% {
+				background: #0c9;
+			}
 		}
 	</style>
 	<link rel="svgmaster prefetch" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
@@ -285,10 +298,29 @@
 					<p>Now you have no excuses anymore :)</p>
 
 					<h4>Styling/animating parts with CSS</h4>
+					
+					<p>By default SVGMaster instantiates a symbol using the <code>&lt;use /&gt;</code> tag. It creates a shadow DOM element that you cannot simply style via CSS unless the SVG itself is written for that purpose (using <code>inherit</code> as value for fills/strokes).</p>
+					<p>Instantiating saves memory and most of the times you don't need to recolor/transition/animate a part of a single instance of an icon via CSS. When needed simply add a <code>svgmaster-clone</code> attribute to the element and instead of instantiating SVGMaster will clone the symbol, keeping the content in the main DOM so that you can easily style it.</p>
+					<blockquote>Styling icon parts via CSS heavily depends on how the SVG is written. An SVG is not your usual graphical asset. It is a markup language and offers lot of customization.</blockquote>
+					<p>A visual property of an SVG element can be defined i nthree ways:</p>
+					<ul>
+						<li>Presentation attributes (lowest priority)</li>
+						<li>External stylesheet</li>
+						<li>Inline stylesheet (highest priority)</li>
+					</ul>
+					<p>When cloning a symbol you will be able to oveerride a property unless it is using inline style. In that case you will need the <code>!important</code> directive (which is not a good practice but inlining styles isn't either).</p>
 					<p><i class="icon icon-graduate"></i> standard icon</p>
-					<p><i class="icon icon-graduate icon-graduate-recolor"></i> CSS recolored icon</p>
-					<p><i class="icon icon-graduate icon-graduate-hover"></i> CSS transition on hover</p>
-					<p><i class="icon icon-graduate icon-graduate-animate"></i> CSS animation</p>
+					<p><i class="icon icon-graduate icon-graduate-recolor"></i> CSS recolored icon (no clone / not working)</p>
+					<p><i class="icon icon-graduate icon-graduate-recolor" svgmaster-clone></i> CSS recolored icon</p>
+					<p><i class="icon icon-graduate icon-graduate-hover" svgmaster-clone></i> CSS transition on hover</p>
+					<p><i class="icon icon-graduate icon-graduate-animate" svgmaster-clone></i> CSS animation</p>
+
+					<p>Just to recap:</p>
+					<ul>
+						<li>Restyling not needed: nothing needed</li>
+						<li>Restyling for every instance: Just define a CSS rule (i.e.: <code>.graduate-dress {fill: yellow;}</code> (add <code>!important if the original SVG uses inline styles</code>))</li>
+						<li>Restyling a single instance: cloning needed (add <code>svgmaster-clone</code> attribute, write your CSS rule with or without <code>!important</code>)</li>
+					</ul>
 				</div>
 				<div class="box">
 					<h3 class="title">Usage / Workflow recap</h3>
