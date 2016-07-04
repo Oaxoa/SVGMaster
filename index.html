@@ -158,9 +158,21 @@
 			background-position: bottom;
 			background-repeat: repeat-x;
 		}
-		#iconSymbol-key {
-			width: 2em;
-			height: 1em;
+		.icon-graduate {
+			width: 3em;
+			height: 3em;
+		}
+		.graduate-hat {
+			fill: #E0E0E0;
+		}
+		.icon-graduate-recolor .graduate-dress {
+			fill: #f06 !important;
+		}
+		.icon-graduate-hover {
+			transition: all .3s ease;
+		}
+		.icon-graduate-hover:hover path.graduate-dress {
+			opacity: .5;
 		}
 	</style>
 	<link rel="svgmaster prefetch" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
@@ -271,6 +283,12 @@
 
 					<p>Dingbat/icon fonts had the advantage to contain multiple elements in one single resource file and have many tools that help streamlining the process&hellip; until now.</p>
 					<p>Now you have no excuses anymore :)</p>
+
+					<h4>Styling/animating parts with CSS</h4>
+					<p><i class="icon icon-graduate"></i> standard icon</p>
+					<p><i class="icon icon-graduate icon-graduate-recolor"></i> CSS recolored icon</p>
+					<p><i class="icon icon-graduate icon-graduate-hover"></i> CSS transition on hover</p>
+					<p><i class="icon icon-graduate icon-graduate-animate"></i> CSS animation</p>
 				</div>
 				<div class="box">
 					<h3 class="title">Usage / Workflow recap</h3>
