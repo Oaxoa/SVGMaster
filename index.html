@@ -162,29 +162,28 @@
 			width: 3em;
 			height: 3em;
 		}
-		.graduate-hat {
-			fill: #E0E0E0;
-		}
 		.icon-graduate-recolor .graduate-dress {
-			fill: #f06 !important;
+			fill: #f06;
+		}
+		.icon-graduate-hover {
+			cursor: pointer;
 		}
 		.icon-graduate-hover .graduate-dress {
 			transition: all .3s ease;
 		}
 		.icon-graduate-hover:hover .graduate-dress {
-			fill: #0C9 !important;
+			fill: #0C9;
 		}
 		.icon-graduate-animate .graduate-dress {
-			animation: pulse 3s infinite;
-
+			animation: pulse 2s infinite alternate;
 		}
 		
 		@keyframes pulse {
 			0% {
-				background: magenta;
+				fill: magenta;
 			}
 			100% {
-				background: #0c9;
+				fill: #0c9;
 			}
 		}
 	</style>
@@ -318,7 +317,7 @@
 					<p>Just to recap:</p>
 					<ul>
 						<li>Restyling not needed: nothing needed</li>
-						<li>Restyling for every instance: Just define a CSS rule (i.e.: <code>.graduate-dress {fill: yellow;}</code> (add <code>!important if the original SVG uses inline styles</code>))</li>
+						<li>Restyling for every instance: Just define a CSS rule (i.e.: <code>.graduate-dress {fill: yellow;}</code> (add <code>!important</code> if the original SVG uses inline styles))</li>
 						<li>Restyling a single instance: cloning needed (add <code>svgmaster-clone</code> attribute, write your CSS rule with or without <code>!important</code>)</li>
 					</ul>
 				</div>
