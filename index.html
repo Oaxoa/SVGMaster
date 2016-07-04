@@ -186,6 +186,14 @@
 				fill: #0c9;
 			}
 		}
+		blockquote {
+			background-repeat: no-repeat;
+			background-size: 2.5em;
+			background-position: 1em 1em;
+			margin-left: 0;
+			padding: 1em 1em 1em 4.5em;
+			border: 1px solid #ccc;
+		}
 	</style>
 	<link rel="svgmaster prefetch" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -300,7 +308,7 @@
 					
 					<p>By default SVGMaster instantiates a symbol using the <code>&lt;use /&gt;</code> tag. It creates a shadow DOM element that you cannot simply style via CSS unless the SVG itself is written for that purpose (using <code>inherit</code> as value for fills/strokes).</p>
 					<p>Instantiating saves memory and most of the times you don't need to recolor/transition/animate a part of a single instance of an icon via CSS. When needed simply add a <code>svgmaster-clone</code> attribute to the element and instead of instantiating SVGMaster will clone the symbol, keeping the content in the main DOM so that you can easily style it.</p>
-					<blockquote>Styling icon parts via CSS heavily depends on how the SVG is written. An SVG is not your usual graphical asset. It is a markup language and offers lot of customization.</blockquote>
+					<blockquote class="iconBg icon-loudspeaker">Styling icon parts via CSS heavily depends on how the SVG is written. An SVG is not your usual graphical asset. It is a markup language and offers lot of customization.</blockquote>
 					<p>A visual property of an SVG element can be defined i nthree ways:</p>
 					<ul>
 						<li>Presentation attributes (lowest priority)</li>
