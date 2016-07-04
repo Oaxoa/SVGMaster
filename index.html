@@ -178,8 +178,10 @@
 			<section id="contents">
 				<div class="box">
 					<h3 class="title">Features</h3>
-					<p>SVGMaster allow you to streamline the usage of svg in a web projects delivering an amount of unique features:</p>
-					
+					<p>SVGMaster allow you to streamline the usage of svg in a web project.<br />
+					It is more than a library, it is a whole high efficient and maintainable workflow based on SVG.</p>
+					<p>SVGMaster delivers an amount of unique features:</p>
+
 					<h4>One single SVG library</h4>
 					<p>Be careful, we said "library", not "spritesheet".</p>
 					<p>Spritesheets are so 2008. They are a breeze to use but a pain to create and maintain. There are a good number of tools that will help you during the creation of a spritesheet but if this is true for PNGs, it is not so true when it comes to SVGs.</p>
@@ -203,6 +205,10 @@
 
 					<h4>It lets you build you library</h4>
 					<p>Via <a href="https://www.npmjs.com/package/grunt-svgstore">svgstore</a> as a dev dependency. Everything is already packed.</p>
+
+					<h4>Debug / showcase your library in page with a single command</h4>
+					<p>Just call <code>SVGMaster.showcase()</code> to preview all icons in your library in the page itself. Do it programmatically or via console.</p><p>When your are done just call <code>SVGMaster.hideShowcase()</code>. Check the full <a href="">API</a>.</p>
+					<p><button id="btnShowcase">Showcase current library</button></p>
 				</div>
 				<div class="box">
 					<h3 class="title">A few demo icons</h3>
@@ -221,17 +227,15 @@
 	height: 1em;
 }
 					</code></pre>
-					<p>you can easily have icons that resizes according to the element they belong.</p>
+					<p>you can easily have icons that resizes according to the font-size of the parent element.</p>
 					<p>If you want to have an icon twice as big, simply define it as 2em wide/high. Or use pixels if you really want to.</p>
-					<p>If you have some specific icon that have different aspect ratio (not square), simply override the symbol definition:</p>
+					<p>If you have some specific icon that have different aspect ratio (not square), simply specify a more specific rule:</p>
 					<pre><code>
-						#iconSymbol-key {
+						.icon.icon-whatever {
 							width: 2em;
 							height: 1em;
 						}
 					</code></pre>
-
-					<p><i class="icon icon-key" style="font-size: 64px"></i><br />a key icon</p>
 				</div>
 
 				<div class="box">
@@ -246,7 +250,51 @@
 						<button id="btnNextStyle">Cycle style</button>
 					</div>
 				</div>
-				<button id="btnShowcase">Showcase</button>
+
+				<div class="box">
+					<h3 class="title">SVG &gt; Dingbat fonts</h3>
+					<p>Dingbat/icon fonts are cool, but:
+					<ul>
+						<li>they are monochromatic</li>
+						<li>they consist of one single layer/element</li>
+						<li>they are confusing and need a lot of css rules to assign glyphs code to something meaningful</li>
+						<li>All glyphs share the same aspect ratio</li>
+						<li>Elements can be resized ONLY via font-size</li>
+					</ul>
+					<p>SVGs on the other side:</p>
+					<ul>
+						<li>consist in structured markup that let you have different parts in a single icon/background</li>
+						<li>parts and symbol can have meaningful class names/ids</li>
+						<li>can be animated via css transitions or animations</li>
+						<li>can be animated via SMIL</li>
+					</ul>
+
+					<p>Dingbat/icon fonts had the advantage to contain multiple elements in one single resource file and have many tools that help streamlining the process&hellip; until now.</p>
+					<p>Now you have no excuses anymore :)</p>
+				</div>
+				<div class="box">
+					<h3 class="title">Usage / Workflow recap</h3>
+					<p>As a dev tool:</p>
+					<ol>
+						<li>Install via <code>npm install svgmaster --save</code></li>
+						<li>Customize Gruntfile.js, task "svgstore" to add folders for libraries to be built</li>
+						<li>Build libraries with <code>grunt libraries</code></li>
+						<li>If needed build changes to the library with <code>grunt</code></li>
+						<li>If needed run tests with <code>tape test/SVGMaster.js</code> or <code>npm test</code></li>
+					</ol>
+					<p>As a client side library:</p>
+					<ol>
+						<li>Include <code>dist/svgmaster.min.js</code> in your markup</li>
+						<li>Define in your css a basic rule for icons: <code>.icon {width: 1em; height: 1em;}</code></li>
+						<li>(Optional) If you have some icon that are not square add specific rule for the aspect ratio: <code>.icon.icon-pen, .icon.icon-key {width: 2em;}</code></li>
+						<li>(Optional) If you need the showcase functionality (aka debugging) and you want it to look pretty include <code>dist/svgmaster.min.css</code> in your page</li>
+						<li>Use <code>&lt;i class="icon icon-calendar"&gt;&lt;/i&gt;</code> for icons or <code>&lt;div class="iconBg icon-calendar"&gt;&lt;/div&gt;</code> for backgrounds</li>
+						<li>(Optional) You can override the default selector to be able to use something like: <code>&lt;span data-icon="icon-calendar"&gt;&lt;/span&gt;</code>. Check the <a href="javascript:;">API</a></li>
+						<li>Call SVGMaster.update()</li>
+					</ol>
+				</div>
+
+				
 			</section>
 			<footer></footer>
 		</section>
