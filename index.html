@@ -235,26 +235,26 @@
 		<section id="main">
 			<header>
 				<h1 class="logo"><i class="icon icon-graduate-2"></i><br />SVGMaster</h1>
-				<h2>Come <em>coding faster</em>, obey <em>the svg</em> master!</h2>
+				<h2>Come <em>coding faster</em>, obey <em>the SVG</em> master!</h2>
 				<a href="https://github.com/Oaxoa/SVGMaster"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 			</header>
 			<section id="contents">
 				<div class="box">
 					<h3 class="title">Features</h3>
-					<p>SVGMaster allow you to streamline the usage of svg in a web project.<br />
+					<p>SVGMaster allows you to streamline the usage of SVG in a web project.<br />
 					It is more than a library, it is a whole high efficient and maintainable workflow based on SVG.</p>
 					<p>SVGMaster delivers an amount of unique features:</p>
 
 					<h4>One single SVG library</h4>
-					<p>Be careful, we said "library", not "spritesheet".</p>
-					<p>Spritesheets are so 2008. They are a breeze to use but a pain to create and maintain. There are a good number of tools that will help you during the creation of a spritesheet but if this is true for PNGs, it is not so true when it comes to SVGs.</p>
-					<p>What SVGMaster promotes is the usage of a single svg file containing a symbol definition for every icon or background you need.</p>
+					<p>Be careful, we said "library", not "sprite sheet".</p>
+					<p>sprite sheets are so 2008. They are a breeze to use but a pain to create and maintain. There are a good number of tools that will help you during the creation of a sprite sheet but if this is true for PNGs, it is not so true when it comes to SVGs.</p>
+					<p>What SVGMaster promotes is the usage of a single SVG file containing a symbol definition for every icon or background you need.</p>
 					<p>Forget about coordinates or stage size.</p>
-					<p>Load EVERY graphical asset you gonna need in 1 single HTTP request without the hassle of maintaining a spritesheet.</p>
-					<p>It heavily makes use of the <code>&lt;use /&gt;</code> svg tag to use instances of symbols when it comes to icons (and this was the easy part since reference to external library symbols is well upported across modern browsers) and when it comes to backgrounds it extract the markup of the symbol in the library, build it in a base64 representation and inlines it in the style attribute of the DOM element to maximize compatibility.</p>
+					<p>Load EVERY graphical asset you gonna need in 1 single HTTP request without the hassle of maintaining a sprite sheet.</p>
+					<p>It heavily makes use of the <code>&lt;use /&gt;</code> SVG tag to use instances of symbols when it comes to icons (and this was the easy part since reference to external library symbols is well supported across modern browsers) and when it comes to backgrounds it extracts the markup of the symbol in the library, build it in a base64 representation and inlines it in the style attribute of the DOM element to maximize compatibility.</p>
 
 					<h4>Manages both icons and backgrounds</h4>
-					<p>They have very different approach and browser support when it comes use references from a single library.</p>
+					<p>They have a very different approach and browser support when it comes use references from a single library.</p>
 					<p>SVGMaster takes care of all the verbose and boring stuff.</p>
 
 					<h4>Super easy setup</h4>
@@ -264,27 +264,27 @@
 					
 					<h4>It is a manager</h4>
 					<p>No instances to maintain, just call <code>SVGMaster.update()</code> and all the unparsed instances will be rendered.</p>
-					<p>SVGMaster don't implement any kind of polling, you are responsible to trigger the <code>update</code> method whenever you replace elements or add new ones.</p>
+					<p>SVGMaster doesn't implement any kind of polling, you are responsible for triggering the <code>update</code> method whenever you replace elements or add new ones.</p>
 
 					<h4>It lets you build your library</h4>
 					<p>Via <a href="https://www.npmjs.com/package/grunt-svgstore">svgstore</a> as a dev dependency. Everything is already packed.</p>
 
 					<h4>Debug / showcase your library in page with a single command</h4>
-					<p>Just call <code>SVGMaster.showcase()</code> to preview all icons in your library in the page itself. Do it programmatically or via console.</p><p>When your are done just call <code>SVGMaster.hideShowcase()</code>. Check the full <a href="#API">API</a>.</p>
+					<p>Just call <code>SVGMaster.showcase()</code> to preview all icons in your library on the page itself. Do it programmatically or via the console.</p><p>When your are done just call <code>SVGMaster.hideShowcase()</code>. Check the full <a href="#API">API</a>.</p>
 					<blockquote class="iconBg icon-loudspeaker">This demo page is loading a big library (103 icons) to better present the showcase feature. Most of the icons are not used elsewhere in the page, so tipically the library file could be 10x smaller.</blockquote>
 					<p><button id="btnShowcase">Showcase current library</button></p>
 				</div>
 				<div class="box">
 					<h3 class="title">A few demo icons</h3>
-					<h1><i class="icon icon-chemistry"></i> In a h1 sample element</h1>
-					<h2><i class="icon icon-chemistry"></i> In a h2 sample element</h2>
-					<h3><i class="icon icon-chemistry"></i> In a h3 sample element</h3>
-					<h4><i class="icon icon-chemistry"></i> In a h4 sample element</h4>
-					<h5><i class="icon icon-chemistry"></i> In a h5 sample element</h5>
-					<h6><i class="icon icon-chemistry"></i> In a h6 sample element</h6>
-					<p><i class="icon icon-chemistry"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behaviour, just like images <i class="icon icon-football"></i>.</p>
+					<h1><i class="icon icon-chemistry"></i> In an h1 sample element</h1>
+					<h2><i class="icon icon-chemistry"></i> In an h2 sample element</h2>
+					<h3><i class="icon icon-chemistry"></i> In an h3 sample element</h3>
+					<h4><i class="icon icon-chemistry"></i> In an h4 sample element</h4>
+					<h5><i class="icon icon-chemistry"></i> In an h5 sample element</h5>
+					<h6><i class="icon icon-chemistry"></i> In an h6 sample element</h6>
+					<p><i class="icon icon-chemistry"></i> In a paragraph. By default they simply have inline <i class="icon icon-briefcase"></i> behavior, just like images <i class="icon icon-football"></i>.</p>
 
-					<p>Using this simple css rule:</p>
+					<p>Using this simple CSS rule:</p>
 					<pre><code>
 .icon {
 	width: 1em;
@@ -293,7 +293,7 @@
 					</code></pre>
 					<p>you can easily have icons that resizes according to the font-size of the parent element.</p>
 					<p>If you want to have an icon twice as big, simply define it as 2em wide/high. Or use pixels if you really want to.</p>
-					<p>If you have some specific icon that have different aspect ratio (not square), simply specify a more specific rule:</p>
+					<p>If you have any specific icon that has different aspect ratio (not square), simply specify a more specific rule:</p>
 					<pre><code>
 .icon.icon-whatever {
 	width: 2em;
@@ -305,12 +305,12 @@
 				<div class="box">
 					<h3 class="title">A few backgrounds</h3>
 					<div id="bgTest1" class="box iconBg icon-arlequine">
-						<p>This is a div with a svg background.</p>
+						<p>This is a div with an SVG background.</p>
 						<button id="btnNextBg">Cycle background</button>
 						<a class="credit" href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
 					</div>
 					<div id="bgTest2" class="box style0 iconBg icon-football">
-						<p>This is another div with a svg background.</p>
+						<p>This is another div with an SVG background.</p>
 						<button id="btnNextStyle">Cycle style</button>
 					</div>
 				</div>
@@ -321,7 +321,7 @@
 					<ul>
 						<li>they are monochromatic</li>
 						<li>they consist of one single layer/element</li>
-						<li>they are confusing and need a lot of css rules to assign glyphs code to something meaningful</li>
+						<li>they are confusing and need a lot of CSS rules to assign glyphs code to something meaningful</li>
 						<li>All glyphs share the same aspect ratio</li>
 						<li>Elements can be resized ONLY via font-size</li>
 					</ul>
@@ -329,11 +329,11 @@
 					<ul>
 						<li>consist in structured markup that let you have different parts in a single icon/background</li>
 						<li>parts and symbol can have meaningful class names/ids</li>
-						<li>can be animated via css transitions or animations</li>
+						<li>can be animated via CSS transitions or animations</li>
 						<li>can be animated via SMIL</li>
 					</ul>
 
-					<p>Dingbat/icon fonts had the advantage to contain multiple elements in one single resource file and have many tools that help streamlining the process&hellip; until now.</p>
+					<p>Dingbat/icon fonts had the advantage to contain multiple elements in one single resource file and have many tools that help to streamline the process&hellip; until now.</p>
 					<p>Now you have no excuses anymore :)</p>
 
 					<h4>Styling/animating parts with CSS</h4>
@@ -374,7 +374,7 @@
 					<p>As a client side library:</p>
 					<ol>
 						<li>Include <code>dist/svgmaster.min.js</code> in your markup</li>
-						<li>Define in your css a basic rule for icons: <code>.icon {width: 1em; height: 1em;}</code></li>
+						<li>Define in your CSS a basic rule for icons: <code>.icon {width: 1em; height: 1em;}</code></li>
 						<li>(Optional) If you have some icon that are not square add specific rule for the aspect ratio: <code>.icon.icon-pen, .icon.icon-key {width: 2em;}</code></li>
 						<li>(Optional) If you need the showcase functionality (aka debugging) and you want it to look pretty include <code>dist/svgmaster.min.css</code> in your page</li>
 						<li>Use <code>&lt;i class="icon icon-calendar"&gt;&lt;/i&gt;</code> for icons or <code>&lt;div class="iconBg icon-calendar"&gt;&lt;/div&gt;</code> for backgrounds</li>
@@ -400,12 +400,12 @@
 						</dd>
 						<dt>replaceIcons</dt>
 						<dd>
-							Replace elements matching IconsSelector selector with the svg item while keeping the classes<br />
+							Replace elements matching IconsSelector selector with the SVG item while keeping the classes<br />
 							@param  {jQuery} target Narrows the search to descendants of this element
 						</dd>
 						<dt>replaceBackgrounds</dt>
 						<dd>
-							Parses elements matching BgsSelectors inlining the svg content as (base64 encoded) background-url property<br />
+							Parses elements matching BgsSelectors inlining the SVG content as (base64 encoded) background-url property<br />
 							@param  {jQuery} target Narrows the search to descendants of this element
 						</dd>
 						<dt>update</dt>
