@@ -1,521 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>SVGMaster demo page</title>
-	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Dosis:600|Kalam:700' rel='stylesheet' type='text/css'>
-	<style>
-		/* Page related */
-		body {
-			font-family: "PT Sans", Helvetica, Arial, sans-serif;
-			text-align: center;
-			background: #fed;
-			padding: 0; margin: 0;
-		}
-		a {
-			color: #F06;
-			font-weight: bold;
-			text-decoration: none;
-		}
-		a:hover {
-			text-decoration: underline;
-		}
-		#bg {
-			background-size: cover;
-		}
-		.box {
-			padding: 2em; margin: 4em 0 2em 0;
-			border: 1px solid #ccc;
-			background: #fff;
-			position: relative;
-			text-align: left;
-			min-height: 300px;
-		}
-		.box .credit {
-			position: absolute;
-			bottom: -1.5em;
-			text-align: center;
-			width: 100%;
-			font-size: 11px;
-			color: #000;
-			text-decoration: none;
-		}
-		.box .credit:hover {
-			text-decoration: underline;
-		}
-		button {
-			padding: .35em .65em;
-			border: none;
-			border-radius: .3em;
-			background: #f06;
-			color: #fff;
-			border-bottom: 3px solid #f04;
-			cursor: pointer;
-			font-family: Dosis, sans-serif;
-			text-transform: uppercase;
-		}
-		button:hover {
-			background-color: #f08;
-		}
-		#main {
-			max-width: 1120px;
-			width: 100%;
-			padding: 30px;
-			box-sizing: border-box;
-			background: #fff;
-			border-left: 2px solid #ccc;
-			border-right: 2px solid #ccc;
-			margin: 0 auto;
-		}
-		.logo {
-			font-family: Kalam;
-			margin: .25em 0 0 0;
-			font-size: 72px;
-			line-height: 1.2em;
-		}
-		header h2 {
-			margin: 0;
-		}
-		h3.title {
-			text-align: left;
-			font-size: 2em;
-			text-transform: uppercase;
-		}
-		.box h3.title {
-			position: absolute;
-			top: -1.05em;
-			left: 1em;
-			padding: 0;
-			display: inline-block;
-			background: #fff;
-			margin: 0;
-		}
-		h1 {
-			font-size: 2em;
-		}
-		code {
-			font-family: Consola, monospace;
-			background: #e5e5e5;
-			color: #333;
-			padding: .1em .35em;
-			white-space: pre;
-		}
-
-		.box p {
-			background: rgba(255,255,255,.85);
-			padding: .3em 0;
-			line-height: 1.3em;
-			font-size: 1.1em;
-			margin: 0;
-		}
-		h4 {
-			font-size: 1.3em;
-		}
-		pre {
-			background: #e5e5e5;
-			padding-left: 1em;
-		}
-		dt {
-		    font-weight: bold;
-			margin-top: 1em;
-			margin-bottom: .4em;
-		}
-		dd {
-			margin-left: 0;
-		}
-		footer {
-			text-align: center;
-			margin: 2em 0;
-		}
-		footer .icon {
-			font-size: 7em;
-		}
-		.logo .icon {
-			font-size: 2em;
-		}
-
-
-		/* SVGMaster related */
-		.icon {
-			width: 1em;
-			height: 1em;
-		}
-		#bgTest1 {
-			width: 100%;
-			height: 400px;
-			margin: 0 auto;
-			background-position: center bottom;
-			background-size: cover;
-			background-repeat: no-repeat;
-			box-sizing: border-box;
-		}
-		#bgTest1 p {
-			position: absolute;
-			bottom: 1em;
-			left: 0;
-			width: 100%;
-			text-align: center;
-			margin: 0;
-		}
-		#bgTest1 button {
-			position: absolute;
-			top: 1em; left: 1em;
-		}
-		#bgTest2 {
-			padding-left: 54px;
-		}
-		#bgTest2.style0 {
-			background-size: contain;
-			background-position: right center;
-			background-repeat: no-repeat;
-		}
-		#bgTest2.style1 {
-			background-size: 2em;
-		}
-		#bgTest2.style2 {
-			background-size: 32px;
-			background-position: 12px;
-			background-repeat: repeat-y;
-		}
-		#bgTest2.style3 {
-			padding-right: 54px;
-			background-size: 32px;
-			background-position: right;
-			background-repeat: repeat-y;
-		}
-		#bgTest2.style4 {
-			background-size: 16px;
-			background-position: bottom;
-			background-repeat: repeat-x;
-		}
-		.icon-graduate {
-			width: 3em;
-			height: 3em;
-		}
-		.icon-graduate-recolor .graduate-dress {
-			fill: #f06;
-		}
-		.icon-graduate-hover {
-			cursor: pointer;
-		}
-		.icon-graduate-hover .graduate-dress {
-			transition: all .3s ease;
-		}
-		.icon-graduate-hover:hover .graduate-dress {
-			fill: #0C9;
-		}
-		.icon-graduate-animate .graduate-dress {
-			animation: pulse 2s infinite alternate;
-		}
-		
-		@keyframes pulse {
-			0% {
-				fill: magenta;
-			}
-			100% {
-				fill: #0c9;
-			}
-		}
-		blockquote {
-			background-repeat: no-repeat;
-			background-size: 2.5em;
-			background-position: 1em 1em;
-			margin-left: 0;
-			padding: 1em 1em 1em 4.5em;
-			border: 1px solid #ccc;
-		}
-	</style>
-	<link rel="svgmaster prefetch" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-	
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SVGMaster demo page</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Dosis:600|Kalam:700' rel='stylesheet' type='text/css'>
+    <style>
+    /* Page related */
+    
+    body {
+        font-family: "PT Sans", Helvetica, Arial, sans-serif;
+        text-align: center;
+        background: #fed;
+        padding: 0;
+        margin: 0;
+    }
+    
+    a {
+        color: #F06;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    #bg {
+        background-size: cover;
+    }
+    
+    .box {
+        padding: 2em;
+        margin: 4em 0 2em 0;
+        border: 1px solid #ccc;
+        background: #fff;
+        position: relative;
+        text-align: left;
+        min-height: 300px;
+    }
+    
+    .box .credit {
+        position: absolute;
+        bottom: -1.5em;
+        text-align: center;
+        width: 100%;
+        font-size: 11px;
+        color: #000;
+        text-decoration: none;
+    }
+    
+    .box .credit:hover {
+        text-decoration: underline;
+    }
+    
+    button {
+        padding: .35em .65em;
+        border: none;
+        border-radius: .3em;
+        background: #f06;
+        color: #fff;
+        border-bottom: 3px solid #f04;
+        cursor: pointer;
+        font-family: Dosis, sans-serif;
+        text-transform: uppercase;
+    }
+    
+    button:hover {
+        background-color: #f08;
+    }
+    
+    #main {
+        max-width: 1120px;
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+        background: #fff;
+        border-left: 2px solid #ccc;
+        border-right: 2px solid #ccc;
+        margin: 0 auto;
+    }
+    
+    .logo {
+        font-family: Kalam;
+        margin: .25em 0 0 0;
+        font-size: 72px;
+        line-height: 1.2em;
+    }
+    
+    header h2 {
+        margin: 0;
+    }
+    
+    h3.title {
+        text-align: left;
+        font-size: 2em;
+        text-transform: uppercase;
+    }
+    
+    .box h3.title {
+        position: absolute;
+        top: -1.05em;
+        left: 1em;
+        padding: 0;
+        display: inline-block;
+        background: #fff;
+        margin: 0;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    code {
+        font-family: Consola, monospace;
+        background: #e5e5e5;
+        color: #333;
+        padding: .1em .35em;
+        white-space: pre;
+    }
+    
+    .box p {
+        background: rgba(255, 255, 255, .85);
+        padding: .3em 0;
+        line-height: 1.3em;
+        font-size: 1.1em;
+        margin: 0;
+    }
+    
+    h4 {
+        font-size: 1.3em;
+    }
+    
+    pre {
+        background: #e5e5e5;
+        padding-left: 1em;
+    }
+    
+    dt {
+        font-weight: bold;
+        margin-top: 1em;
+        margin-bottom: .4em;
+    }
+    
+    dd {
+        margin-left: 0;
+    }
+    
+    footer {
+        text-align: center;
+        margin: 2em 0;
+    }
+    
+    footer .icon {
+        font-size: 7em;
+    }
+    
+    .logo .icon {
+        font-size: 2em;
+    }
+    /* SVGMaster related */
+    
+    .icon {
+        width: 1em;
+        height: 1em;
+    }
+    
+    #bgTest1 {
+        width: 100%;
+        height: 400px;
+        margin: 0 auto;
+        background-position: center bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+        box-sizing: border-box;
+    }
+    
+    #bgTest1 p {
+        position: absolute;
+        bottom: 1em;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+    
+    #bgTest1 button {
+        position: absolute;
+        top: 1em;
+        left: 1em;
+    }
+    
+    #bgTest2 {
+        padding-left: 54px;
+    }
+    
+    #bgTest2.style0 {
+        background-size: contain;
+        background-position: right center;
+        background-repeat: no-repeat;
+    }
+    
+    #bgTest2.style1 {
+        background-size: 2em;
+    }
+    
+    #bgTest2.style2 {
+        background-size: 32px;
+        background-position: 12px;
+        background-repeat: repeat-y;
+    }
+    
+    #bgTest2.style3 {
+        padding-right: 54px;
+        background-size: 32px;
+        background-position: right;
+        background-repeat: repeat-y;
+    }
+    
+    #bgTest2.style4 {
+        background-size: 16px;
+        background-position: bottom;
+        background-repeat: repeat-x;
+    }
+    
+    .icon-graduate {
+        width: 3em;
+        height: 3em;
+    }
+    
+    .icon-graduate-recolor .graduate-dress {
+        fill: #f06;
+    }
+    
+    .icon-graduate-hover {
+        cursor: pointer;
+    }
+    
+    .icon-graduate-hover .graduate-dress {
+        transition: all .3s ease;
+    }
+    
+    .icon-graduate-hover:hover .graduate-dress {
+        fill: #0C9;
+    }
+    
+    .icon-graduate-animate .graduate-dress {
+        animation: pulse 2s infinite alternate;
+    }
+    
+    @keyframes pulse {
+        0% {
+            fill: magenta;
+        }
+        100% {
+            fill: #0c9;
+        }
+    }
+    
+    blockquote {
+        background-repeat: no-repeat;
+        background-size: 2.5em;
+        background-position: 1em 1em;
+        margin-left: 0;
+        padding: 1em 1em 1em 4.5em;
+        border: 1px solid #ccc;
+    }
+    </style>
+    <link rel="svgmaster prefetch" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/libraries/sample.svg" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 </head>
+
 <body>
-	<div id="bg" class="iconBg icon-texture">
-		<section id="main">
-			<header>
-				<h1 class="logo"><i class="icon icon-graduate-2"></i><br />SVGMaster</h1>
-				<h2>Come <em>coding faster</em>, obey <em>the SVG</em> master!</h2>
-				<a href="https://github.com/Oaxoa/SVGMaster"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
-			</header>
-			<section id="contents">
-				<div class="box">
-					<h3 class="title">Features</h3>
-					<p>SVGMaster allows you to streamline the usage of SVG in a web project.<br />
-					It is more than a library, it is a whole high efficient and maintainable workflow based on SVG.</p>
-					<p>SVGMaster delivers an amount of unique features:</p>
-
-					<h4>One single SVG library</h4>
-					<p>Be careful, we said "library", not "sprite sheet".</p>
-					<p>sprite sheets are so 2008. They are a breeze to use but a pain to create and maintain. There are a good number of tools that will help you during the creation of a sprite sheet but if this is true for PNGs, it is not so true when it comes to SVGs.</p>
-					<p>What SVGMaster promotes is the usage of a single SVG file containing a symbol definition for every icon or background you need.</p>
-					<p>Forget about coordinates or stage size.</p>
-					<p>Load EVERY graphical asset you gonna need in 1 single HTTP request without the hassle of maintaining a sprite sheet.</p>
-					<p>It heavily makes use of the <code>&lt;use /&gt;</code> SVG tag to use instances of symbols when it comes to icons (and this was the easy part since reference to external library symbols is well supported across modern browsers) and when it comes to backgrounds it extracts the markup of the symbol in the library, build it in a base64 representation and inlines it in the style attribute of the DOM element to maximize compatibility.</p>
-
-					<h4>Manages both icons and backgrounds</h4>
-					<p>They have a very different approach and browser support when it comes use references from a single library.</p>
-					<p>SVGMaster takes care of all the verbose and boring stuff.</p>
-
-					<h4>Super easy setup</h4>
-					<p>Include the library, use custom attributes or class names on elements&hellip; Et voila! That's it.</p>
-					<p>By default, the default selector for icons is "i.icon" for icons and "*.iconBg" for backgrounds so the library will search for elements like <code>&lt;i class="icon icon-calendar" /&gt;</code> and <code>&lt;div class="iconBg icon-calendar"&gt;I am a div&lt;/div&gt;</code> but it is customizable.</p>
-
-					
-					<h4>It is a manager</h4>
-					<p>No instances to maintain, just call <code>SVGMaster.update()</code> and all the unparsed instances will be rendered.</p>
-					<p>SVGMaster doesn't implement any kind of polling, you are responsible for triggering the <code>update</code> method whenever you replace elements or add new ones.</p>
-
-					<h4>It lets you build your library</h4>
-					<p>Via <a href="https://www.npmjs.com/package/grunt-svgstore">svgstore</a> as a dev dependency. Everything is already packed.</p>
-
-					<h4>Debug / showcase your library in page with a single command</h4>
-					<p>Just call <code>SVGMaster.showcase()</code> to preview all icons in your library on the page itself. Do it programmatically or via the console.</p><p>When your are done just call <code>SVGMaster.hideShowcase()</code>. Check the full <a href="#API">API</a>.</p>
-					<blockquote class="iconBg icon-loudspeaker">This demo page is loading a big library (103 icons) to better present the showcase feature. Most of the icons are not used elsewhere in the page, so typically the library file could be 10x smaller.</blockquote>
-					<p><button id="btnShowcase">Showcase current library</button></p>
-				</div>
-				<div class="box">
-					<h3 class="title">A few demo icons</h3>
-					<h1><i class="icon icon-chemistry"></i> In an h1 sample element</h1>
-					<h2><i class="icon icon-chemistry"></i> In an h2 sample element</h2>
-					<h3><i class="icon icon-chemistry"></i> In an h3 sample element</h3>
-					<h4><i class="icon icon-chemistry"></i> In an h4 sample element</h4>
-					<h5><i class="icon icon-chemistry"></i> In an h5 sample element</h5>
-					<h6><i class="icon icon-chemistry"></i> In an h6 sample element</h6>
-					<p><i class="icon icon-chemistry"></i> In a paragraph. By default, they simply have inline <i class="icon icon-briefcase"></i> behavior, just like images <i class="icon icon-football"></i>.</p>
-
-					<p>Using this simple CSS rule:</p>
-					<pre><code>
+    <div id="bg" class="iconBg icon-texture">
+        <section id="main">
+            <header>
+                <h1 class="logo"><i class="icon icon-graduate-2"></i><br />SVGMaster</h1>
+                <h2>Come <em>coding faster</em>, obey <em>the SVG</em> master!</h2>
+                <a href="https://github.com/Oaxoa/SVGMaster"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+            </header>
+            <section id="contents">
+                <div class="box">
+                    <h3 class="title">Features</h3>
+                    <p>SVGMaster allows you to streamline the usage of SVG in a web project.
+                        <br /> It is more than a library, it is a whole high efficient and maintainable workflow based on SVG.</p>
+                    <p>SVGMaster delivers an amount of unique features:</p>
+                    <h4>One single SVG library</h4>
+                    <p>Be careful, we said "library", not "sprite sheet".</p>
+                    <p>sprite sheets are so 2008. They are a breeze to use but a pain to create and maintain. There are a good number of tools that will help you during the creation of a sprite sheet but if this is true for PNGs, it is not so true when it comes to SVGs.</p>
+                    <p>What SVGMaster promotes is the usage of a single SVG file containing a symbol definition for every icon or background you need.</p>
+                    <p>Forget about coordinates or stage size.</p>
+                    <p>Load EVERY graphical asset you gonna need in 1 single HTTP request without the hassle of maintaining a sprite sheet.</p>
+                    <p>It heavily makes use of the <code>&lt;use /&gt;</code> SVG tag to use instances of symbols when it comes to icons (and this was the easy part since reference to external library symbols is well supported across modern browsers) and when it comes to backgrounds it extracts the markup of the symbol in the library, build it in a base64 representation and inlines it in the style attribute of the DOM element to maximize compatibility.</p>
+                    <h4>Manages both icons and backgrounds</h4>
+                    <p>They have a very different approach and browser support when it comes use references from a single library.</p>
+                    <p>SVGMaster takes care of all the verbose and boring stuff.</p>
+                    <h4>Super easy setup</h4>
+                    <p>Include the library, use custom attributes or class names on elements&hellip; Et voila! That's it.</p>
+                    <p>By default, the default selector for icons is "i.icon" for icons and "*.iconBg" for backgrounds so the library will search for elements like <code>&lt;i class="icon icon-calendar" /&gt;</code> and <code>&lt;div class="iconBg icon-calendar"&gt;I am a div&lt;/div&gt;</code> but it is customizable.</p>
+                    <h4>It is a manager</h4>
+                    <p>No instances to maintain, just call <code>SVGMaster.update()</code> and all the unparsed instances will be rendered.</p>
+                    <p>SVGMaster doesn't implement any kind of polling, you are responsible for triggering the <code>update</code> method whenever you replace elements or add new ones.</p>
+                    <h4>It lets you build your library</h4>
+                    <p>Via <a href="https://www.npmjs.com/package/grunt-svgstore">svgstore</a> as a dev dependency. Everything is already packed.</p>
+                    <h4>Debug / showcase your library in page with a single command</h4>
+                    <p>Just call <code>SVGMaster.showcase()</code> to preview all icons in your library on the page itself. Do it programmatically or via the console.</p>
+                    <p>When your are done just call <code>SVGMaster.hideShowcase()</code>. Check the full <a href="#API">API</a>.</p>
+                    <blockquote class="iconBg icon-loudspeaker">This demo page is loading a big library (103 icons) to better present the showcase feature. Most of the icons are not used elsewhere in the page, so typically the library file could be 10x smaller.</blockquote>
+                    <p>
+                        <button id="btnShowcase">Showcase current library</button>
+                    </p>
+                </div>
+                <div class="box">
+                    <h3 class="title">A few demo icons</h3>
+                    <h1><i class="icon icon-chemistry"></i> In an h1 sample element</h1>
+                    <h2><i class="icon icon-chemistry"></i> In an h2 sample element</h2>
+                    <h3><i class="icon icon-chemistry"></i> In an h3 sample element</h3>
+                    <h4><i class="icon icon-chemistry"></i> In an h4 sample element</h4>
+                    <h5><i class="icon icon-chemistry"></i> In an h5 sample element</h5>
+                    <h6><i class="icon icon-chemistry"></i> In an h6 sample element</h6>
+                    <p><i class="icon icon-chemistry"></i> In a paragraph. By default, they simply have inline <i class="icon icon-briefcase"></i> behavior, just like images <i class="icon icon-football"></i>.</p>
+                    <p>Using this simple CSS rule:</p>
+                    <pre><code>
 .icon {
 	width: 1em;
 	height: 1em;
 }
 					</code></pre>
-					<p>you can easily have icons that resize according to the font-size of the parent element.</p>
-					<p>If you want to have an icon twice as big, simply define it as 2em wide/high. Or use pixels if you really want to.</p>
-					<p>If you have any specific icon that has different aspect ratio (not square), simply specify a more specific rule:</p>
-					<pre><code>
+                    <p>you can easily have icons that resize according to the font-size of the parent element.</p>
+                    <p>If you want to have an icon twice as big, simply define it as 2em wide/high. Or use pixels if you really want to.</p>
+                    <p>If you have any specific icon that has different aspect ratio (not square), simply specify a more specific rule:</p>
+                    <pre><code>
 .icon.icon-whatever {
 	width: 2em;
 	height: 1em;
 }
 					</code></pre>
-				</div>
+                </div>
+                <div class="box">
+                    <h3 class="title">A few backgrounds</h3>
+                    <div id="bgTest1" class="box iconBg icon-arlequine">
+                        <p>This is a div with an SVG background.</p>
+                        <button id="btnNextBg">Cycle background</button>
+                        <a class="credit" href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
+                    </div>
+                    <div id="bgTest2" class="box style0 iconBg icon-football">
+                        <p>This is another div with an SVG background.</p>
+                        <button id="btnNextStyle">Cycle style</button>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3 class="title">SVG &gt; Dingbat fonts</h3>
+                    <p>Dingbat/icon fonts are cool, but:
+                        <ul>
+                            <li>they are monochromatic</li>
+                            <li>they consist of one single layer/element</li>
+                            <li>they are confusing and need a lot of CSS rules to assign glyphs code to something meaningful</li>
+                            <li>All glyphs share the same aspect ratio</li>
+                            <li>Elements can be resized ONLY via font-size</li>
+                        </ul>
+                        <p>SVGs on the other side:</p>
+                        <ul>
+                            <li>consist in structured markup that let you have different parts in a single icon/background</li>
+                            <li>parts and symbol can have meaningful class names/ids</li>
+                            <li>can be animated via CSS transitions or animations</li>
+                            <li>can be animated via SMIL</li>
+                        </ul>
+                        <p>Dingbat/icon fonts had the advantage to contain multiple elements in one single resource file and have many tools that help to streamline the process&hellip; until now.</p>
+                        <p>Now you have no excuses anymore :)</p>
+                        <h4>Styling/animating parts with CSS</h4>
+                        <p>By default, SVGMaster instantiates a symbol using the <code>&lt;use /&gt;</code> tag. It creates a shadow DOM element that you cannot simply style via CSS unless the SVG itself is written for that purpose (using <code>inherit</code> as value for fills/strokes).</p>
+                        <p>Instantiating saves memory and most of the times you don't need to recolor/transition/animate a part of a single instance of an icon via CSS. When needed simply add a <code>svgmaster-clone</code> attribute to the element and instead of instantiating SVGMaster will clone the symbol, keeping the content in the main DOM so that you can easily style it.</p>
+                        <blockquote class="iconBg icon-loudspeaker">Styling icon parts via CSS heavily depends on how the SVG is written. An SVG is not your usual graphical asset. It is a markup language and offers a lot of customization.</blockquote>
+                        <p>A visual property of an SVG element can be defined i nthree ways:</p>
+                        <ul>
+                            <li>Presentation attributes (lowest priority)</li>
+                            <li>External stylesheet</li>
+                            <li>Inline stylesheet (highest priority)</li>
+                        </ul>
+                        <p>When cloning a symbol you will be able to override a property unless it is using inline style. In that case you will need the <code>!important</code> directive (which is not a good practice but inlining styles isn't either).</p>
+                        <p><i class="icon icon-graduate"></i> standard icon</p>
+                        <p><i class="icon icon-graduate icon-graduate-recolor"></i> CSS recolored icon (no clone / not working)</p>
+                        <p><i class="icon icon-graduate icon-graduate-recolor" svgmaster-clone></i> CSS recolored icon</p>
+                        <p><i class="icon icon-graduate icon-graduate-hover" svgmaster-clone></i> CSS transition on hover</p>
+                        <p><i class="icon icon-graduate icon-graduate-animate" svgmaster-clone></i> CSS animation</p>
+                        <p>Just to recap:</p>
+                        <ul>
+                            <li>Restyling not needed: nothing needed</li>
+                            <li>Restyling for every instance: Just define a CSS rule (i.e.: <code>.graduate-dress {fill: yellow;}</code> (add <code>!important</code> if the original SVG uses inline styles))</li>
+                            <li>Restyling a single instance: cloning needed (add <code>svgmaster-clone</code> attribute, write your CSS rule with or without <code>!important</code>)</li>
+                        </ul>
+                </div>
+                <div class="box">
+                    <h3 class="title">Usage / Workflow recap</h3>
+                    <p>As a dev tool:</p>
+                    <ol>
+                        <li>Install via <code>npm install svgmaster --save</code></li>
+                        <li>Customize Gruntfile.js, task "svgstore" to add folders for libraries to be built</li>
+                        <li>Build libraries with <code>grunt libraries</code></li>
+                        <li>If needed build changes to the library with <code>grunt</code></li>
+                        <li>If needed run tests with <code>tape test/SVGMaster.js</code> or <code>npm test</code></li>
+                    </ol>
+                    <p>As a client side library:</p>
+                    <ol>
+                        <li>Include <code>dist/svgmaster.min.js</code> in your markup</li>
+                        <li>Define in your CSS a basic rule for icons: <code>.icon {width: 1em; height: 1em;}</code></li>
+                        <li>(Optional) If you have some icon that are not square add specific rule for the aspect ratio: <code>.icon.icon-pen, .icon.icon-key {width: 2em;}</code></li>
+                        <li>(Optional) If you need the showcase functionality (aka debugging) and you want it to look pretty include <code>dist/svgmaster.min.css</code> in your page</li>
+                        <li>Use <code>&lt;i class="icon icon-calendar"&gt;&lt;/i&gt;</code> for icons or <code>&lt;div class="iconBg icon-calendar"&gt;&lt;/div&gt;</code> for backgrounds</li>
+                        <li>(Optional) You can override the default selector to be able to use something like: <code>&lt;span data-icon="icon-calendar"&gt;&lt;/span&gt;</code>. Check the <a href="#API">API</a></li>
+                        <li>Call SVGMaster.update()</li>
+                    </ol>
+                </div>
+                <div class="box">
+                    <h3 class="title" id="API">API</h3>
+                    <dl>
+                        <dt>getIconElements</dt>
+                        <dd>
+                            Retrieves the matching icon elements, without performing any operation
+                            <br /> @param {jQuery} [target] A jquery element to limit the search. If not provided defaults to the body element
+                            <br /> @return {jQuery} A jQuery collection of matching elements
+                        </dd>
+                        <dt>getBackgroundElements</dt>
+                        <dd>
+                            Retrieves the matching background elements, without performing any operation
+                            <br /> @param {jQuery} [target] A jquery element to limit the search. If not provided defaults to the body element
+                            <br /> @return {jQuery} A jQuery collection of matching elements
+                        </dd>
+                        <dt>replaceIcons</dt>
+                        <dd>
+                            Replace elements matching IconsSelector selector with the SVG item while keeping the classes
+                            <br /> @param {jQuery} target Narrows the search to descendants of this element
+                        </dd>
+                        <dt>replaceBackgrounds</dt>
+                        <dd>
+                            Parses elements matching BgsSelectors inlining the SVG content as (base64 encoded) background-url property
+                            <br /> @param {jQuery} target Narrows the search to descendants of this element
+                        </dd>
+                        <dt>update</dt>
+                        <dd>
+                            Parses icons and background (only if not already parsed)
+                            <br /> @param {jQuery} [target] Set it to narrow the search to descendants of this element. If falsy defaults to the body element
+                        </dd>
+                        <dt>loadLibrary</dt>
+                        <dd>
+                            Load library and invoke the update method when done
+                            <br /> @param {String} [url] The url of the library to load. If falsy the default library specified via
+                            <link rel="svgmaster" /> will be used
+                        </dd>
+                        <dt>setIconSelector</dt>
+                        <dd>
+                            Sets the icons selector pattern to match in jQuery selector format
+                            <br /> @param {String} selector The selector string
+                        </dd>
+                        <dt>getIconSelector</dt>
+                        <dd>
+                            Gets the icons selector pattern to match in jQuery selector format
+                            <br /> @return {String} The selector string
+                        </dd>
+                        <dt>setBackgroundSelector</dt>
+                        <dd>
+                            Sets the backgrounds selector pattern to match in jQuery selector format
+                            <br /> @param {String} selector The selector string
+                        </dd>
+                        <dt>getBackgroundSelector</dt>
+                        <dd>
+                            Gets the backgrounds selector pattern to match in jQuery selector format
+                            <br /> @return {String} The selector string
+                        </dd>
+                        <dt>showcase</dt>
+                        <dd>
+                            Opens the library showcase dialog
+                        </dd>
+                        <dt>hideShowcase</dt>
+                        <dd>
+                            Hides the showcase dialog
+                        </dd>
+                        <dt>getDefaultLibraryURL</dt>
+                        <dd>
+                            Gets the url of the library specified in the
+                            <link rel="svgmaster" /> href attribute
+                            <br /> @return {String} The url of the default library
+                        </dd>
+                    </dl>
+                </div>
+            </section>
+            <footer><i class="icon icon-atom"></i></footer>
+        </section>
+    </div>
+    <script src="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.min.js"></script>
+    <script>
+    (function() {
+        var BACKGROUNDS_CYCLE = ['icon-arlequine', 'icon-dots', 'icon-texture'];
+        var STYLES_COUNT = 5;
+        var backgroundIndex = 0;
+        var backgroundStyle = 0;
 
-				<div class="box">
-					<h3 class="title">A few backgrounds</h3>
-					<div id="bgTest1" class="box iconBg icon-arlequine">
-						<p>This is a div with an SVG background.</p>
-						<button id="btnNextBg">Cycle background</button>
-						<a class="credit" href="http://www.freepik.com/free-photos-vectors/background">Background vector designed by Freepik</a>
-					</div>
-					<div id="bgTest2" class="box style0 iconBg icon-football">
-						<p>This is another div with an SVG background.</p>
-						<button id="btnNextStyle">Cycle style</button>
-					</div>
-				</div>
+        function init() {
+            setBehaviours();
+        }
 
-				<div class="box">
-					<h3 class="title">SVG &gt; Dingbat fonts</h3>
-					<p>Dingbat/icon fonts are cool, but:
-					<ul>
-						<li>they are monochromatic</li>
-						<li>they consist of one single layer/element</li>
-						<li>they are confusing and need a lot of CSS rules to assign glyphs code to something meaningful</li>
-						<li>All glyphs share the same aspect ratio</li>
-						<li>Elements can be resized ONLY via font-size</li>
-					</ul>
-					<p>SVGs on the other side:</p>
-					<ul>
-						<li>consist in structured markup that let you have different parts in a single icon/background</li>
-						<li>parts and symbol can have meaningful class names/ids</li>
-						<li>can be animated via CSS transitions or animations</li>
-						<li>can be animated via SMIL</li>
-					</ul>
+        function setBehaviours() {
+            $('#btnShowcase').on('click', SVGMaster.showcase);
+            $('#btnNextBg').on('click', nextBackground);
+            $('#btnNextStyle').on('click', nextStyle);
+            $('body').on('click', '.SVGMasterWrapper', SVGMaster.hideShowcase);
+        }
 
-					<p>Dingbat/icon fonts had the advantage to contain multiple elements in one single resource file and have many tools that help to streamline the process&hellip; until now.</p>
-					<p>Now you have no excuses anymore :)</p>
+        function nextBackground() {
+            backgroundIndex++;
+            backgroundIndex = backgroundIndex % BACKGROUNDS_CYCLE.length;
+            renderBackground();
+        }
 
-					<h4>Styling/animating parts with CSS</h4>
-					
-					<p>By default, SVGMaster instantiates a symbol using the <code>&lt;use /&gt;</code> tag. It creates a shadow DOM element that you cannot simply style via CSS unless the SVG itself is written for that purpose (using <code>inherit</code> as value for fills/strokes).</p>
-					<p>Instantiating saves memory and most of the times you don't need to recolor/transition/animate a part of a single instance of an icon via CSS. When needed simply add a <code>svgmaster-clone</code> attribute to the element and instead of instantiating SVGMaster will clone the symbol, keeping the content in the main DOM so that you can easily style it.</p>
-					<blockquote class="iconBg icon-loudspeaker">Styling icon parts via CSS heavily depends on how the SVG is written. An SVG is not your usual graphical asset. It is a markup language and offers a lot of customization.</blockquote>
-					<p>A visual property of an SVG element can be defined i nthree ways:</p>
-					<ul>
-						<li>Presentation attributes (lowest priority)</li>
-						<li>External stylesheet</li>
-						<li>Inline stylesheet (highest priority)</li>
-					</ul>
-					<p>When cloning a symbol you will be able to override a property unless it is using inline style. In that case you will need the <code>!important</code> directive (which is not a good practice but inlining styles isn't either).</p>
-					<p><i class="icon icon-graduate"></i> standard icon</p>
-					<p><i class="icon icon-graduate icon-graduate-recolor"></i> CSS recolored icon (no clone / not working)</p>
-					<p><i class="icon icon-graduate icon-graduate-recolor" svgmaster-clone></i> CSS recolored icon</p>
-					<p><i class="icon icon-graduate icon-graduate-hover" svgmaster-clone></i> CSS transition on hover</p>
-					<p><i class="icon icon-graduate icon-graduate-animate" svgmaster-clone></i> CSS animation</p>
+        function renderBackground() {
+            $('#bgTest1').attr('class', 'box iconBg ' + BACKGROUNDS_CYCLE[backgroundIndex]).removeAttr('data-svgmaster-parsed');
+            SVGMaster.update();
+        }
 
-					<p>Just to recap:</p>
-					<ul>
-						<li>Restyling not needed: nothing needed</li>
-						<li>Restyling for every instance: Just define a CSS rule (i.e.: <code>.graduate-dress {fill: yellow;}</code> (add <code>!important</code> if the original SVG uses inline styles))</li>
-						<li>Restyling a single instance: cloning needed (add <code>svgmaster-clone</code> attribute, write your CSS rule with or without <code>!important</code>)</li>
-					</ul>
-				</div>
-				<div class="box">
-					<h3 class="title">Usage / Workflow recap</h3>
-					<p>As a dev tool:</p>
-					<ol>
-						<li>Install via <code>npm install svgmaster --save</code></li>
-						<li>Customize Gruntfile.js, task "svgstore" to add folders for libraries to be built</li>
-						<li>Build libraries with <code>grunt libraries</code></li>
-						<li>If needed build changes to the library with <code>grunt</code></li>
-						<li>If needed run tests with <code>tape test/SVGMaster.js</code> or <code>npm test</code></li>
-					</ol>
-					<p>As a client side library:</p>
-					<ol>
-						<li>Include <code>dist/svgmaster.min.js</code> in your markup</li>
-						<li>Define in your CSS a basic rule for icons: <code>.icon {width: 1em; height: 1em;}</code></li>
-						<li>(Optional) If you have some icon that are not square add specific rule for the aspect ratio: <code>.icon.icon-pen, .icon.icon-key {width: 2em;}</code></li>
-						<li>(Optional) If you need the showcase functionality (aka debugging) and you want it to look pretty include <code>dist/svgmaster.min.css</code> in your page</li>
-						<li>Use <code>&lt;i class="icon icon-calendar"&gt;&lt;/i&gt;</code> for icons or <code>&lt;div class="iconBg icon-calendar"&gt;&lt;/div&gt;</code> for backgrounds</li>
-						<li>(Optional) You can override the default selector to be able to use something like: <code>&lt;span data-icon="icon-calendar"&gt;&lt;/span&gt;</code>. Check the <a href="#API">API</a></li>
-						<li>Call SVGMaster.update()</li>
-					</ol>
-				</div>
+        function nextStyle() {
+            backgroundStyle++;
+            backgroundStyle = backgroundStyle % STYLES_COUNT;
+            renderStyle();
+        }
 
-				<div class="box">
-					<h3 class="title" id="API">API</h3>
-					<dl>
-						<dt>getIconElements</dt>
-						<dd>
-							Retrieves the matching icon elements, without performing any operation<br />
-							@param  {jQuery} [target] A jquery element to limit the search. If not provided defaults to the body element<br />
-							@return {jQuery} A jQuery collection of matching elements
-						</dd>
-						<dt>getBackgroundElements</dt>
-						<dd>
-							Retrieves the matching background elements, without performing any operation<br />
-							@param  {jQuery} [target] A jquery element to limit the search. If not provided defaults to the body element<br />
-							@return {jQuery} A jQuery collection of matching elements
-						</dd>
-						<dt>replaceIcons</dt>
-						<dd>
-							Replace elements matching IconsSelector selector with the SVG item while keeping the classes<br />
-							@param  {jQuery} target Narrows the search to descendants of this element
-						</dd>
-						<dt>replaceBackgrounds</dt>
-						<dd>
-							Parses elements matching BgsSelectors inlining the SVG content as (base64 encoded) background-url property<br />
-							@param  {jQuery} target Narrows the search to descendants of this element
-						</dd>
-						<dt>update</dt>
-						<dd>
-							Parses icons and background (only if not already parsed)<br />
-							@param  {jQuery} [target] Set it to narrow the search to descendants of this element. If falsy defaults to the body element
-						</dd>
-						<dt>loadLibrary</dt>
-						<dd>
-							Load library and invoke the update method when done<br />
-							@param  {String} [url] The url of the library to load. If falsy the default library specified via <link rel="svgmaster" /> will be used
-						</dd>
-						<dt>setIconSelector</dt>
-						<dd>
-							Sets the icons selector pattern to match in jQuery selector format<br />
-							@param {String} selector The selector string
-						</dd>
-						<dt>getIconSelector</dt>
-						<dd>
-							Gets the icons selector pattern to match in jQuery selector format<br />
-							@return {String} The selector string
-						</dd>
-						<dt>setBackgroundSelector</dt>
-						<dd>
-							Sets the backgrounds selector pattern to match in jQuery selector format<br />
-							@param {String} selector The selector string
-						</dd>
-						<dt>getBackgroundSelector</dt>
-						<dd>
-							Gets the backgrounds selector pattern to match in jQuery selector format<br />
-							@return {String} The selector string
-						</dd>
-						<dt>showcase</dt>
-						<dd>
-							Opens the library showcase dialog
-						</dd>
-						<dt>hideShowcase</dt>
-						<dd>
-							Hides the showcase dialog
-						</dd>
-						<dt>getDefaultLibraryURL</dt>
-						<dd>
-							Gets the url of the library specified in the <link rel="svgmaster" /> href attribute<br />
-							@return {String} The url of the default library
-						</dd>
-					</dl>
-				</div>
+        function renderStyle() {
+            $('#bgTest2').attr('class', 'box iconBg icon-football style' + backgroundStyle).removeAttr('data-svgmaster-parsed');
+            SVGMaster.update();
+        }
+        $(function() {
+            init();
+        });
+    })();
+    </script>
+    <link rel="stylesheet" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.showcase.min.css" />
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-
-
-				
-			</section>
-			<footer><i class="icon icon-atom"></i></footer>
-		</section>
-	</div>
-
-	
-	
-
-	
-	<script src="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.min.js"></script>
-	<script>
-		(function() {
-			var BACKGROUNDS_CYCLE=['icon-arlequine', 'icon-dots', 'icon-texture'];
-			var STYLES_COUNT=5;
-			var backgroundIndex=0;
-			var backgroundStyle=0;
-
-			function init() {
-				setBehaviours();
-			}
-			function setBehaviours() {
-				$('#btnShowcase').on('click', SVGMaster.showcase);
-				$('#btnNextBg').on('click', nextBackground);
-				$('#btnNextStyle').on('click', nextStyle);
-				$('body').on('click', '.SVGMasterWrapper', SVGMaster.hideShowcase);
-			}
-			function nextBackground() {
-				backgroundIndex++;
-				backgroundIndex=backgroundIndex%BACKGROUNDS_CYCLE.length;
-				renderBackground();
-			}
-			function renderBackground() {
-				$('#bgTest1').attr('class', 'box iconBg '+BACKGROUNDS_CYCLE[backgroundIndex]).removeAttr('data-svgmaster-parsed');
-				SVGMaster.update();
-			}
-			function nextStyle() {
-				backgroundStyle++;
-				backgroundStyle=backgroundStyle%STYLES_COUNT;
-				renderStyle();
-			}
-			function renderStyle() {
-				$('#bgTest2').attr('class', 'box iconBg icon-football style'+backgroundStyle).removeAttr('data-svgmaster-parsed');
-				SVGMaster.update();
-			}
-			$(function() {
-				init();
-			});	
-		})();
-		
-	</script>
-	<link rel="stylesheet" href="https://rawgit.com/Oaxoa/SVGMaster/master/dist/svgmaster.showcase.min.css" />
-	<script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-		ga('create', 'UA-31925718-3', 'auto');
-		ga('send', 'pageview');
-</script>
+    ga('create', 'UA-31925718-3', 'auto');
+    ga('send', 'pageview');
+    </script>
 </body>
+
 </html>
